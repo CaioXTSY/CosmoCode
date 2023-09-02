@@ -9,7 +9,7 @@
 
 **🏫 Universidade Federal de Alagoas (UFAL)**  
 **🏛️ Campus Arapiraca**  
-** 📚Disciplina : Programação Orientada a Objetos**  
+**📚Disciplina : Programação Orientada a Objetos**  
 **💻 Curso: Ciência da Computação**  
 **👨‍🏫 Professores: Tácito e Tercio**  
 **🛠️ Monitor : Rodrigo**
