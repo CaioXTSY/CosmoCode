@@ -9,9 +9,10 @@
 
 **🏫 Universidade Federal de Alagoas (UFAL)**  
 **🏛️ Campus Arapiraca**  
+** 📚Disciplina : Programação Orientada a Objetos**  
 **💻 Curso: Ciência da Computação**  
 **👨‍🏫 Professores: Tácito e Tercio**  
-**📚 Disciplina: POO - B**
+**🛠️ Monitor : Rodrigo**
 
 ## 📝 Descrição da Área e Tema 🌍
 
@@ -19,23 +20,23 @@
 Este trabalho está situado na interseção entre ciência da computação 🖥️ e astronomia 🔭, especificamente na simulação computacional de sistemas astronômicos 🌠.
 
 ### 🌟 Tema
-O tema central é a simulação do Sistema Solar ☀️🪐 e outros corpos celestes, como sistemas estelares 🌟 e galáxias 🌌, usando conceitos de Programação Orientada a Objetos (OOP) 💻.
+O tema central é a simulação do Sistema Solar e outros corpos celestes, como sistemas estelares e galáxias, usando conceitos de Programação Orientada a Objetos (OOP) 💻.
 
 ## 🎯 Justificativa da Importância do Tema 🌌
 
-O estudo e a simulação do universo 🌌 têm aplicações práticas em diversas áreas, incluindo a exploração espacial 🚀, a previsão de eventos astronômicos 🌕🌒 e a pesquisa científica 📚. O uso de OOP permite uma modelagem mais natural e extensível dos complexos sistemas astronômicos, facilitando o entendimento e a manutenção do código 🛠️.
+O estudo e a simulação do universo 🌌 têm aplicações práticas em diversas áreas, incluindo a exploração espacial, a previsão de eventos astronômicos e a pesquisa científica . O uso de OOP permite uma modelagem mais natural e extensível dos complexos sistemas astronômicos, facilitando o entendimento e a manutenção do código 🛠️.
 
 ## 🎩 Objetivos da Implementação 🌠
 
-1. 🛠️ Desenvolver uma estrutura de classes que represente diferentes tipos de corpos celestes, como planetas 🪐, estrelas 🌟, luas 🌕, asteroides ☄️, cometas 💫 e buracos negros ⚫.
+1. 🛠️ Desenvolver uma estrutura de classes que represente diferentes tipos de corpos celestes, como planetas, estrelas, luas, asteroides, cometas e buracos negros.
   
-2. 🧪 Implementar métodos para simular a interação entre esses corpos, como movimento orbital 🔄 e forças gravitacionais 🍎.
+2. 🧪 Implementar métodos para simular a interação entre esses corpos, como movimento orbital e forças gravitacionais.
   
-3. 👓 Utilizar padrões de projeto e boas práticas de OOP para criar um código modular, extensível e fácil de manter 📚.
+3. 👓 Utilizar padrões de projeto e boas práticas de OOP para criar um código modular, extensível e fácil de manter.
 
 ---
 
-## 🌌 Classes e Conceitos de OOP 🛠️
+## 🌌 Classes e Conceitos de OOP 
 
 ### 👾 Classes Abstratas
 - `CorpoCeleste`: Classe abstrata que contém campos como nome, massa e métodos.
@@ -60,7 +61,7 @@ O estudo e a simulação do universo 🌌 têm aplicações práticas em diversa
 ### 🌠 Classes Adicionais
 - `EventoAstronomico`: Representa eventos como eclipses e alinhamentos.
 
-## 📚 Conceitos de Orientação a Objetos Utilizados 🌈
+## 📚 Conceitos de Orientação a Objetos Utilizados
 
 ### 👶 Herança
 - `Planeta`, `Estrela`, `Lua`, `Asteroide`, `Cometa`, e `BuracoNegro` são subclasses de `CorpoCeleste`.
