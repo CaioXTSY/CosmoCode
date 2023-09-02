@@ -75,7 +75,8 @@ O estudo e a simulação do universo 🌌 têm aplicações práticas em diversa
 ### 🎁 Encapsulamento
 - Atributos são mantidos privados, sendo acessíveis apenas por métodos `get` e `set`.
 
-## 🤖 Padrão de Projeto ❓
+## 🤖 Padrão de Projeto
+- O padrão de projeto Singleton será utilizado para garantir que apenas uma instância de determinadas classes seja criada durante a execução do programa. Isso é particularmente útil para classes que representam entidades únicas dentro do contexto da simulação, como o SistemaSolar. Utilizando o Singleton, podemos assegurar que todas as operações relacionadas ao Sistema Solar sejam coordenadas através de uma única instância, evitando inconsistências e duplicações.
 
 ## 🚫 Tratamento de Erros ❓
 
