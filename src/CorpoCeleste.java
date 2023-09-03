@@ -3,10 +3,12 @@ package src;
 public abstract class CorpoCeleste {
     private String nome;
     private double massa;
+    private int idade;
 
-    public CorpoCeleste(String nome, double massa) {
+    public CorpoCeleste(String nome, double massa, int idade) {
         this.nome = nome;
         this.massa = massa;
+        this.idade = idade;
     }
 
     public String getNome() {
@@ -23,6 +25,14 @@ public abstract class CorpoCeleste {
 
     public void setMassa(double massa) {
         this.massa = massa;
+    }
+
+    public int getIdade(){
+        return idade;
+    }
+
+    public void setIdade(int idade){
+        this.idade = idade;
     }
 
     public abstract String descricao();
