@@ -24,8 +24,8 @@ public class Planeta extends CorpoCeleste implements Movimentavel, Gravitacional
     private int numeroDeLuas;
     private double raio;
 
-    public Planeta(String nome, double massa, double distanciaAoSol, int numeroDeLuas, double raio) {
-        super(nome, massa);
+    public Planeta(String nome, double massa, double distanciaAoSol, int numeroDeLuas, double raio, int idade) {
+        super(nome, massa, idade);
         this.distanciaAoSol = distanciaAoSol;
         this.numeroDeLuas = numeroDeLuas;
         this.raio = raio;
@@ -53,7 +53,11 @@ public class Planeta extends CorpoCeleste implements Movimentavel, Gravitacional
 
     @Override
     public String descricao() { // Melhorar depois
-        return "Planeta " + getNome() + " com massa de " + getMassa() + " kg, " + numeroDeLuas + " luas, raio de " + raio + " km e distância ao Sol de " + distanciaAoSol + " UA.";
+        return "\nO planeta " + getNome() + ", existente a " + getIdade() + " bilhões de anos e possuindo " + getNumeroDeLuas()
+        + " lua(s), tem uma massa de " + getMassa() + " kg, um raio de " + getRaio() + " km e sua distância com o Sol é de " 
+        + getDistanciaAoSol() + " UA." + "\nInformações extras:" + "\nDensidade: " + calcularDensidade() + " g/cm³"
+        + "\nVolume: " + calcularVolume() + " km³" + "\nSuperfície: " + calcularSuperficie() + " km²"
+        + "\nGravidade: " + calcularGravidade() + " m/s²";
     }
 
     @Override
