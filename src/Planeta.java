@@ -8,27 +8,43 @@
  * - Override : Sobrescreve um metodo da classe pai
  * - Super : Chama o construtor da classe pai
  * - Math.cos/sin/tan(angulo) Formula para calcular rotacao
- * 
- * A Fazer :
- * - Melhorar o metodo descricao()
- * - Outras Classes
- * - Testes(?)
- * - Adicionar vinculo com uma lua e uma estrela(sol)(posteriormente)
- * 
 */
 
 package src;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Planeta extends CorpoCeleste implements Movimentavel, Gravitacional {
+    private Estrela estrelaOrbitada;
+    private List<CorpoCeleste> luas;
     private double distanciaAoSol;
     private int numeroDeLuas;
     private double raio;
 
-    public Planeta(String nome, double massa, double distanciaAoSol, int numeroDeLuas, double raio, int idade) {
+    public Planeta(String nome, double massa, double distanciaAoSol, int numeroDeLuas, double raio, int idade, Estrela estrelaOrbitada) {
         super(nome, massa, idade);
         this.distanciaAoSol = distanciaAoSol;
         this.numeroDeLuas = numeroDeLuas;
         this.raio = raio;
+        this.estrelaOrbitada = estrelaOrbitada;
+        this.luas = new ArrayList<>();
+    }
+
+    public void adicionarLua(CorpoCeleste lua) {
+        this.luas.add(lua);
+    }
+
+    public Estrela getEstrelaOrbitada() {
+        return estrelaOrbitada;
+    }
+
+    public void setEstrelaOrbitada(Estrela estrelaOrbitada) {
+        this.estrelaOrbitada = estrelaOrbitada;
+    }
+
+    public List<CorpoCeleste> getLuas() {
+        return luas;
     }
 
     @Override
@@ -52,33 +68,12 @@ public class Planeta extends CorpoCeleste implements Movimentavel, Gravitacional
     }
 
     @Override
-    public String descricao() { // Melhorar depois
+    public String descricao() {
         return "\nO planeta " + getNome() + ", existente a " + getIdade() + " bilhões de anos e possuindo " + getNumeroDeLuas()
         + " lua(s), tem uma massa de " + getMassa() + " kg, um raio de " + getRaio() + " km e sua distância com o Sol é de " 
         + getDistanciaAoSol() + " UA." + "\nInformações extras:" + "\nDensidade: " + calcularDensidade() + " g/cm³"
         + "\nVolume: " + calcularVolume() + " km³" + "\nSuperfície: " + calcularSuperficie() + " km²"
         + "\nGravidade: " + calcularGravidade() + " m/s²";
-    }
-
-    @Override
-    public void transladar(double deltaX, double deltaY, double deltaZ) {
-        distanciaAoSol += deltaX;
-    }
-
-    @Override
-    public void rotacionar(double angulo, String eixo) {
-        if (eixo.equals("x")) {
-            raio *= Math.cos(angulo);
-        } else if (eixo.equals("y")) {
-            raio *= Math.sin(angulo);
-        } else if (eixo.equals("z")) {
-            raio *= Math.tan(angulo);
-        }
-    }
-
-    @Override
-    public double calcularForcaGravitacional(CorpoCeleste outroCorpo) {
-        return (6.67430e-11 * getMassa() * outroCorpo.getMassa()) / Math.pow(raio * 1000, 2);
     }
 
     public double getDistanciaAoSol() {
@@ -101,8 +96,28 @@ public class Planeta extends CorpoCeleste implements Movimentavel, Gravitacional
         return raio;
     }
 
-    public void setRaio(int raio) {
+    public void setRaio(double raio) {
         this.raio = raio;
     }
 
+    @Override
+    public void transladar(double deltaX, double deltaY, double deltaZ) {
+        distanciaAoSol += deltaX;
+    }
+
+    @Override
+    public void rotacionar(double angulo, String eixo) {
+        if (eixo.equals("x")) {
+            raio *= Math.cos(angulo);
+        } else if (eixo.equals("y")) {
+            raio *= Math.sin(angulo);
+        } else if (eixo.equals("z")) {
+            raio *= Math.tan(angulo);
+        }
+    }
+
+    @Override
+    public double calcularForcaGravitacional(CorpoCeleste outroCorpo) {
+        return (6.67430e-11 * getMassa() * outroCorpo.getMassa()) / Math.pow(raio * 1000, 2);
+    }
 }
