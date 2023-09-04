@@ -1,5 +1,3 @@
-package src;
-
 public class test {
     public static void main(String[] args) {
         Estrela sol = new Estrela("Sol", 1.989e30, 4, "Ana Amarela", 5778);

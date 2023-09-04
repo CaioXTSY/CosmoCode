@@ -1,5 +1,3 @@
-package src;
-
 public class Lua extends CorpoCeleste implements Movimentavel, Gravitacional {
     private double raio;
     private Planeta planeta;

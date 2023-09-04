@@ -9,9 +9,6 @@
  * - Super : Chama o construtor da classe pai
  * - Math.cos/sin/tan(angulo) Formula para calcular rotacao
 */
-
-package src;
-
 import java.util.ArrayList;
 import java.util.List;
 
