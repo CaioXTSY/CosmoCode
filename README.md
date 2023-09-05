@@ -49,22 +49,15 @@ O estudo e a simulação do universo 🌌 têm aplicações práticas em diversa
 - `Planeta`: Extende `CorpoCeleste`, adiciona campos como distância ao Sol e número de luas.
 - `Estrela`: Extende `CorpoCeleste`, acrescenta campos como tipo de estrela e temperatura.
 - `Lua`: Extende `CorpoCeleste`, adiciona um campo para o planeta a que pertence.
-- `Asteroide`: Extende `CorpoCeleste`, acrescenta campos como composição.
-- `Cometa`: Extende `CorpoCeleste`, adiciona campos como material da cauda e outras coisas.
-- `NaveEspacial`: Contém campos como capacidade de combustível, tripulação e carga.
-- `BuracoNegro`: Extende `CorpoCeleste`, adiciona propriedades como densidade e horizonte de eventos.
 - `Galaxia`: Contém uma lista de `CorpoCeleste` e métodos para adicionar/remover corpos.
 
 ### 🛠️ Composição
 - `SistemaSolar`: Contém uma lista de `CorpoCeleste` e métodos para adicionar/remover corpos e calcular forças gravitacionais entre eles.
 
-### 🌠 Classes Adicionais
-- `EventoAstronomico`: Representa eventos como eclipses e alinhamentos.
-
 ## 📚 Conceitos de Orientação a Objetos Utilizados
 
 ### 👶 Herança
-- `Planeta`, `Estrela`, `Lua`, `Asteroide`, `Cometa`, e `BuracoNegro` são subclasses de `CorpoCeleste`.
+- `Planeta`, `Estrela` e `Lua`, são subclasses de `CorpoCeleste`.
 
 ### 🎈 Abstração
 - `CorpoCeleste` fornece uma abstração de alto nível para todos os corpos celestes.
