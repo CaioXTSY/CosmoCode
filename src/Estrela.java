@@ -1,4 +1,3 @@
-// as coisas comentadas devem ser removidas quando a classe SistemaSolar for c
 import java.util.ArrayList;
 import java.util.List;
 
@@ -6,14 +5,14 @@ public class Estrela extends CorpoCeleste implements Movimentavel, Gravitacional
     private String tipoDeEstrela;
     private double temperatura;
     private double raio;
-    // private SistemaSolar sistemaSolar;
+    private SistemaSolar sistemaSolar;
     private List<Planeta> planetas;
 
-    public Estrela(String nome, double massa, int idade, String tipoDeEstrela, double temperatura) { // colocar sistema solar depois
+    public Estrela(String nome, double massa, int idade, String tipoDeEstrela, double temperatura, SistemaSolar sistemaSolar) {
         super(nome, massa, idade);
         this.tipoDeEstrela = tipoDeEstrela;
         this.temperatura = temperatura;
-        // this.sistemaSolar = sistemaSolar;
+        this.sistemaSolar = sistemaSolar;
         this.planetas = new ArrayList<>();
     }
 
@@ -21,13 +20,13 @@ public class Estrela extends CorpoCeleste implements Movimentavel, Gravitacional
         this.planetas.add(planeta);
     }
 
-    // public SistemaSolar getSistemaSolar() {
-        // return sistemaSolar;
-    // }
+    public SistemaSolar getSistemaSolar() {
+        return sistemaSolar;
+    }
 
-    // public void setSistemaSolar(SistemaSolar sistemaSolar) {
-        // this.sistemaSolar = sistemaSolar;
-    // }
+    public void setSistemaSolar(SistemaSolar sistemaSolar) {
+        this.sistemaSolar = sistemaSolar;
+    }
 
     public List<Planeta> getPlanetas() {
         return planetas;
