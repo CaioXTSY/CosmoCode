@@ -1,7 +1,9 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class test {
     private static Galaxia galaxiaAtual;
+    private static Galaxia galaxia;
     private static SistemaSolar sisSol;
     private static Estrela estar;
     public static void main(String[] args) {
@@ -20,48 +22,69 @@ public class test {
             System.out.println("5 - Adicionar uma Lua");
             System.out.println("6 - Dados da Galáxia");
             System.out.println("7 - Sair");
-
+            System.out.print("Digite sua opção: ");
             int op = scanner.nextInt();
             scanner.nextLine();
 
             switch (op) {
                 case 1:
                 if (galaxiaAtual == null) {
-                    System.out.println("Digite o nome da Galáxia: ");
+                    System.out.print("Digite o nome da Galáxia: ");
                     String nomeGalaxia = scanner.nextLine();
-                    galaxiaAtual = new Galaxia(nomeGalaxia);
+                    Galaxia galaxiaAtual = new Galaxia(nomeGalaxia);
+                    Galaxia galaxia = galaxiaAtual; 
                     System.out.println("Galáxia " + nomeGalaxia + " adicionada!" );
                 } else {
                     System.out.println("Esta Galáxia já existe escolha outra opção.");
                 }
                 break;
                 case 2:
-                if (galaxiaAtual != null) {
+                    if (galaxia != null) {
                     System.out.println("Digite o nome do Sistema Solar: ");
                     String nomeSisSol = scanner.nextLine();
-                    sisSol = new SistemaSolar(nomeSisSol, galaxiaAtual);
-                    System.out.println("Sistema Solar " + nomeSisSol + " pertencente a Galáxia " + galaxiaAtual + " adicionado");
+                    SistemaSolar sisSol = new SistemaSolar(nomeSisSol, galaxiaAtual);
+                    galaxiaAtual.adicionarSistemaSolar(sisSol);
+                    System.out.println("Sistema Solar " + nomeSisSol + " adicionado");
                 } else {
                     System.out.println("Para criar um Sistema Solar, deve-se criar uma Galáxia primeiro!");
                 }
                 break;
                 case 3:
                 if (galaxiaAtual != null && sisSol != null) {
-                    System.out.println("Digite o nome da Estrela: ");
+                    System.out.print("Digite o nome da Estrela: ");
                     String nomeEstrela = scanner.nextLine();
-                    System.out.println("Digite a massa da Estrela: ");
+                    System.out.print("Digite a massa da Estrela: ");
                     String massEstar = scanner.nextLine();
                     double masEstar = Double.parseDouble(massEstar);
-                    System.out.println("Digite a idade da Estrela: ");
+                    System.out.print("Digite a idade da Estrela: ");
                     String idEstar = scanner.nextLine();
                     int idaEstar = Integer.parseInt(idEstar);
-                    System.out.println("Digite o tipo de Estrela: ");
+                    System.out.print("Digite o tipo de Estrela: ");
                     String tpEstar = scanner.nextLine();
-                    System.out.println("Digite a temperatura da Estrela: ");
+                    System.out.print("Digite a temperatura da Estrela: ");
                     String temEstar = scanner.nextLine();
                     double tempEstar = Double.parseDouble(temEstar);
-                    estar = new Estrela(nomeEstrela, masEstar, idaEstar, tpEstar, tempEstar, sisSol);
+                    Estrela estar = new Estrela(nomeEstrela, masEstar, idaEstar, tpEstar, tempEstar, sisSol);
+                    galaxiaAtual.getSistemasSolares().get(0).adicionarEstrela(estar);
+                    System.out.println("Estrela " + nomeEstrela + " adicionada!");
+                } else {
+                    System.out.println("Para criar uma Estrela, deve-se criar um Sistema Solar primeiro!");
                 }
+                break;
+                case 6:
+                System.out.println("--- Dados da Galáxia ---");
+                System.out.println("Nome: " + galaxiaAtual);
+                System.out.print("Sistemas Solares: ");
+                List<SistemaSolar> sList = galaxiaAtual.getSistemasSolares();
+                for (SistemaSolar i : sList){
+                    System.out.print(i + " ");
+                }
+                System.out.println("\n" + estar.descricao());
+                break;
+                case 7:
+                System.out.println("Encerrando execução...");
+                System.exit(0);
+                break;
             }
         }
     }
