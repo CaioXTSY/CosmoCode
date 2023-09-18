@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,6 +15,7 @@ public class test {
         Scanner scanner = new Scanner(System.in);
 
         while (true){
+            try {
             System.out.println("\nSPACE EXPO");
             System.out.println("\nMENU:");
             System.out.println("1 - Adicionar uma Galáxia");
@@ -122,13 +124,24 @@ public class test {
                     break;
 
                     case 7:
-                    System.out.println("Encerrando execução...");
+                    System.out.println("\nEncerrando execução...");
                     System.exit(0);
                     break;
-                }
+
+                    default:
+                    System.out.println("\nOpção não disponível. Escolha um dos números indicados no menu!");
+                    break;
+                } 
+             
+            } catch (InputMismatchException e) {
+                System.out.println("\nEntrada inválida. Certifique-se de digitar um número.");
+                scanner.nextLine();
+            } catch (Exception e) {
+                System.out.println("\nOcorreu um erro inesperado: " + e.getMessage());
             }
         }
     }
+}
 
 
 
