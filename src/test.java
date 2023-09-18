@@ -1,44 +1,69 @@
+import java.util.Scanner;
+
 public class test {
+    private static Galaxia galaxiaAtual;
+    private static SistemaSolar sisSol;
+    private static Estrela estar;
     public static void main(String[] args) {
-        Galaxia viaLactea = new Galaxia("Via Láctea");
+        Scanner scanner = new Scanner(System.in);
+        galaxiaAtual = null;
+        sisSol = null;
+        estar = null;
 
-        SistemaSolar sistemaSolar = new SistemaSolar("Sistema Solar", viaLactea);
+        while (true){
+            System.out.println("\nSPACE EXPO");
+            System.out.println("\nMENU:");
+            System.out.println("1 - Adicionar uma Galáxia");
+            System.out.println("2 - Adicionar um Sistema Solar");
+            System.out.println("3 - Adicionar uma Estrela");
+            System.out.println("4 - Adiconar um Planeta");
+            System.out.println("5 - Adicionar uma Lua");
+            System.out.println("6 - Dados da Galáxia");
+            System.out.println("7 - Sair");
 
-        Estrela sol = new Estrela("Sol", 1.989e30, 4, "Ana Amarela", 5778, sistemaSolar);
-        sistemaSolar.adicionarEstrela(sol);
+            int op = scanner.nextInt();
+            scanner.nextLine();
 
-        Planeta terra = new Planeta("Terra", 5.972e24, 1.0, 1, 6371, 4, sol);
-        Planeta marte = new Planeta("Marte", 6.4171e23, 1.5, 2, 3389, 4, sol);
-
-        sol.adicionarPlaneta(terra);
-        sol.adicionarPlaneta(marte);
-
-        Lua lua = new Lua("Lua", 7.35e22, 4, 1737, terra);
-
-        terra.adicionarLua(lua);
-
-        System.out.println("------------------------------");
-        System.out.println("Informações da Galáxia:");
-        System.out.println(viaLactea.descricao());
-
-        System.out.println("------------------------------");
-        System.out.println("Informações do Sistema Solar:");
-        System.out.println(sistemaSolar.descricao());
-
-        System.out.println("------------------------------");
-        System.out.println("Informações da Estrela:");
-        System.out.println(sol.descricao());
-
-        System.out.println("------------------------------");
-        System.out.println("Informações dos Planetas:");
-        for (Planeta planeta : sol.getPlanetas()) {
-            System.out.println("------------------------------");
-            System.out.println(planeta.descricao());
+            switch (op) {
+                case 1:
+                if (galaxiaAtual == null) {
+                    System.out.println("Digite o nome da Galáxia: ");
+                    String nomeGalaxia = scanner.nextLine();
+                    galaxiaAtual = new Galaxia(nomeGalaxia);
+                    System.out.println("Galáxia " + nomeGalaxia + " adicionada!" );
+                } else {
+                    System.out.println("Esta Galáxia já existe escolha outra opção.");
+                }
+                break;
+                case 2:
+                if (galaxiaAtual != null) {
+                    System.out.println("Digite o nome do Sistema Solar: ");
+                    String nomeSisSol = scanner.nextLine();
+                    sisSol = new SistemaSolar(nomeSisSol, galaxiaAtual);
+                    System.out.println("Sistema Solar " + nomeSisSol + " pertencente a Galáxia " + galaxiaAtual + " adicionado");
+                } else {
+                    System.out.println("Para criar um Sistema Solar, deve-se criar uma Galáxia primeiro!");
+                }
+                break;
+                case 3:
+                if (galaxiaAtual != null && sisSol != null) {
+                    System.out.println("Digite o nome da Estrela: ");
+                    String nomeEstrela = scanner.nextLine();
+                    System.out.println("Digite a massa da Estrela: ");
+                    String massEstar = scanner.nextLine();
+                    double masEstar = Double.parseDouble(massEstar);
+                    System.out.println("Digite a idade da Estrela: ");
+                    String idEstar = scanner.nextLine();
+                    int idaEstar = Integer.parseInt(idEstar);
+                    System.out.println("Digite o tipo de Estrela: ");
+                    String tpEstar = scanner.nextLine();
+                    System.out.println("Digite a temperatura da Estrela: ");
+                    String temEstar = scanner.nextLine();
+                    double tempEstar = Double.parseDouble(temEstar);
+                    estar = new Estrela(nomeEstrela, masEstar, idaEstar, tpEstar, tempEstar, sisSol);
+                }
+            }
         }
-
-        System.out.println("------------------------------");
-        System.out.println("Informações da Lua:");
-        System.out.println(lua.descricao());
     }
 }
 
