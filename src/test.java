@@ -16,8 +16,8 @@ public class test {
 
         while (true){
             try {
-            System.out.println("\nSPACE EXPO");
-            System.out.println("\nMENU:");
+            System.out.println("\n-----SPACE EXPO-----");
+            System.out.println("\n---MENU---:");
             System.out.println("1 - Adicionar uma Galáxia");
             System.out.println("2 - Adicionar um Sistema Solar");
             System.out.println("3 - Adicionar uma Estrela");
@@ -207,21 +207,47 @@ public class test {
                         System.out.println("\nEspaço Vazio..., Literalmente.");
                     } else {
                     System.out.println("\n----- SPACE DATA -----");
-                    for (Galaxia galaxia : galaxias) {
+                    System.out.println("\nEscolha o que deve ser apresentado:");
+                    System.out.println("1. Ver Gálaxias");
+                    System.out.println("2. Ver Sistemas Solares");
+                    System.out.println("3. Ver Estrelas");
+                    System.out.println("4. Ver Planetas");
+                    System.out.println("5. Ver Luas");
+                    System.out.println("6. Sair");
+                    System.out.print("Digite sua opção: ");
+                    int opc = scanner.nextInt();
+                    scanner.nextLine();
+                    switch (opc) {
+                        case 1:
+                        for (Galaxia galaxia : galaxias) {
                         System.out.println(galaxia.descricao());
+                        break;
                     }
-                    for (SistemaSolar sistemaSolar : sistemasSolares) {
+                        case 2:
+                        for (SistemaSolar sistemaSolar : sistemasSolares) {
                         System.out.println(sistemaSolar.descricao());
+                        break;
                     }
-                    for (Estrela estrela : estrelas) {
+                        case 3:
+                        for (Estrela estrela : estrelas) {
                         System.out.println(estrela.descricao());
+                        break;
                     }
-                    for (Planeta planeta : planetas) {
+                        case 4:
+                        for (Planeta planeta : planetas) {
                         System.out.println(planeta.descricao());
+                        break;
                     }
-                    for (Lua lua : luas) {
+                        case 5:
+                        for (Lua lua : luas) {
                         System.out.println(lua.descricao());
+                        break;
                     }
+                        case 6:
+                        System.out.println("\nVoltando para o menu...");
+                        break;
+                    }
+                    
                     }
                     break;
 
