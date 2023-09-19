@@ -176,6 +176,11 @@ public class test {
                         if (planIndex >= 1 && planIndex <= planetas.size()) {
                             Planeta planeta = planetas.get(planIndex - 1);
 
+                            if (planeta.getLuas().size() >= planeta.getNumeroDeLuas()) {
+                                System.out.println("\nNúmero máximo de Luas atingido para este planeta");
+                                break;
+                            }
+
                             System.out.print("\nDigite o nome da Lua: ");
                             String nome = scanner.nextLine();
                             System.out.print("Digite a massa da Lua: ");
@@ -188,6 +193,7 @@ public class test {
                             String luaId = scanner.nextLine();
                             int idade = Integer.parseInt(luaId);
                             Lua lun = new Lua(nome, massa, idade, raio, planeta);
+                            planeta.adicionarLua(lun);
                             luas.add(lun);
                             System.out.println("\nLua criada: " + nome);
                         } else {
