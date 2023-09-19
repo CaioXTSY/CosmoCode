@@ -284,11 +284,11 @@ public class test {
 
 /* A fazer
 Menu (encaminhado)
-Tratamento de erros(no menu talvez?) (encaminhado)
+Tratamento de erros(no menu talvez?) (concluido?)
 Revisao das formulas(?)
 Refatorar o codigo(gambiarra)
 Ver um jeito de melhorar as entradas
 Resolver bug das fontes(utf8) (passar pra inglês?)
-Melhorar o metodo de exibição(função descrição)
+Melhorar o metodo de exibição(função descrição) (encaminhado)
 Passar o nome das classes para o ingles
 */
