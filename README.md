@@ -69,11 +69,8 @@ O estudo e a simulação do universo 🌌 têm aplicações práticas em diversa
 ### 🎁 Encapsulamento
 - Atributos são mantidos privados, sendo acessíveis apenas por métodos `get` e `set`.
 
-## 🤖 Padrão de Projeto
-- O padrão de projeto Singleton será utilizado para garantir que apenas uma instância de determinadas classes seja criada durante a execução do programa. Isso é particularmente útil para classes que representam entidades únicas dentro do contexto da simulação, como o SistemaSolar. Utilizando o Singleton, podemos assegurar que todas as operações relacionadas ao Sistema Solar sejam coordenadas através de uma única instância, evitando inconsistências e duplicações.
-
 ## 🚫 Tratamento de Erros ❓
-
+- A aplicação de tratamento de erros, dará-se a no menu, onde o usuário poderá fazer o cadastro das entidades ou escolher visualizá-las, por se tratar de um menu baseado em opções númericas, a função InputMismatchException, será utilizada para inpedir entradas inválidas (letras e caracteres especiais), ocasionando uma quebra no código, assim como a função Exception, que será utilizada para capturar erros inesperados.
 ## 📜 Obs
 
 Os métodos de cálculo de impacto, gravitacional e outros fenômenos astronômicos que serão implementados neste projeto são simplificações e idealizações. Eles não representam as complexas equações e teorias da física que descrevem esses fenômenos no universo real.

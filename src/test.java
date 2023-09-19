@@ -16,8 +16,8 @@ public class test {
 
         while (true){
             try {
-            System.out.println("\nSPACE EXPO");
-            System.out.println("\nMENU:");
+            System.out.println("\n-----SPACE EXPO-----");
+            System.out.println("\n---MENU---:");
             System.out.println("1 - Adicionar uma Galáxia");
             System.out.println("2 - Adicionar um Sistema Solar");
             System.out.println("3 - Adicionar uma Estrela");
@@ -207,20 +207,54 @@ public class test {
                         System.out.println("\nEspaço Vazio..., Literalmente.");
                     } else {
                     System.out.println("\n----- SPACE DATA -----");
-                    for (Galaxia galaxia : galaxias) {
-                        System.out.println(galaxia.descricao());
-                    }
-                    for (SistemaSolar sistemaSolar : sistemasSolares) {
-                        System.out.println(sistemaSolar.descricao());
-                    }
-                    for (Estrela estrela : estrelas) {
-                        System.out.println(estrela.descricao());
-                    }
-                    for (Planeta planeta : planetas) {
-                        System.out.println(planeta.descricao());
-                    }
-                    for (Lua lua : luas) {
-                        System.out.println(lua.descricao());
+                    System.out.println("\nEscolha o que deve ser apresentado:");
+                    System.out.println("1. Ver Gálaxias");
+                    System.out.println("2. Ver Sistemas Solares");
+                    System.out.println("3. Ver Estrelas");
+                    System.out.println("4. Ver Planetas");
+                    System.out.println("5. Ver Luas");
+                    System.out.println("6. Sair");
+                    System.out.print("Digite sua opção: ");
+                    int opc = scanner.nextInt();
+                    scanner.nextLine();
+                    switch (opc) {
+                        case 1:
+                            for (Galaxia galaxia : galaxias) {
+                            System.out.println(galaxia.descricao());   
+                        }
+                        break;
+
+                        case 2:
+                            for (SistemaSolar sistemaSolar : sistemasSolares) {
+                            System.out.println(sistemaSolar.descricao());
+                        }
+                        break;
+
+                        case 3:
+                            for (Estrela estrela : estrelas) {
+                            System.out.println(estrela.descricao());
+                        }
+                        break;
+
+                        case 4:
+                            for (Planeta planeta : planetas) {
+                            System.out.println(planeta.descricao());
+                        }
+                        break;
+
+                        case 5:
+                            for (Lua lua : luas) {
+                            System.out.println(lua.descricao());
+                        }
+                        break;
+
+                        case 6:
+                        System.out.println("\nVoltando para o menu...");
+                        break;
+
+                        default:
+                        System.out.println("\nOpção não disponível. Escolha um dos números indicados no menu!");
+                        break;
                     }
                     }
                     break;
@@ -250,11 +284,11 @@ public class test {
 
 /* A fazer
 Menu (encaminhado)
-Tratamento de erros(no menu talvez?) (encaminhado)
+Tratamento de erros(no menu talvez?) (concluido?)
 Revisao das formulas(?)
 Refatorar o codigo(gambiarra)
 Ver um jeito de melhorar as entradas
 Resolver bug das fontes(utf8) (passar pra inglês?)
-Melhorar o metodo de exibição(função descrição)
+Melhorar o metodo de exibição(função descrição) (encaminhado)
 Passar o nome das classes para o ingles
 */
