@@ -8,8 +8,9 @@ public class Estrela extends CorpoCeleste implements Movimentavel, Gravitacional
     private SistemaSolar sistemaSolar;
     private List<Planeta> planetas;
 
-    public Estrela(String nome, double massa, int idade, String tipoDeEstrela, double temperatura, SistemaSolar sistemaSolar) {
+    public Estrela(String nome, double massa, double raio, int idade, String tipoDeEstrela, double temperatura, SistemaSolar sistemaSolar) {
         super(nome, massa, idade);
+        this.raio = raio;
         this.tipoDeEstrela = tipoDeEstrela;
         this.temperatura = temperatura;
         this.sistemaSolar = sistemaSolar;
