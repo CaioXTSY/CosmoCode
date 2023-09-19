@@ -8,8 +8,8 @@ public class test {
     private static List<Galaxia> galaxias = new ArrayList<>();
     private static List<SistemaSolar> sistemasSolares = new ArrayList<>();
     private static List<Estrela> estrelas = new ArrayList<>();
-    private static List<Planeta> planetas;
-    private static List<Lua> luas;
+    private static List<Planeta> planetas = new ArrayList<>();
+    private static List<Lua> luas = new ArrayList<>();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -158,8 +158,49 @@ public class test {
                     }
                     break;
 
+                    case 5:
+                    if (planetas.isEmpty()){
+                        System.out.println("\nNão existem Planetas neste Espaço!");
+                    } else {
+                        System.out.println("\nSelecione em qual Planeta você deseja salvar a Lua:\n");
+                        int index = 1;
+                        for (Planeta planeta : planetas) {
+                            System.out.println(index + ". " + planeta.getNome());
+                            index++;
+                        }
+                        System.out.print("\nDigite o índice do Planeta desejado: ");
+
+                        int planIndex = scanner.nextInt();
+                        scanner.nextLine();
+
+                        if (planIndex >= 1 && planIndex <= planetas.size()) {
+                            Planeta planeta = planetas.get(planIndex - 1);
+
+                            System.out.print("\nDigite o nome da Lua: ");
+                            String nome = scanner.nextLine();
+                            System.out.print("Digite a massa da Lua: ");
+                            String luaMas = scanner.nextLine();
+                            Double massa = Double.parseDouble(luaMas);
+                            System.out.print("Digite o raio da Lua: ");
+                            String luaRar = scanner.nextLine();
+                            Double raio = Double.parseDouble(luaRar);
+                            System.out.print("Digite a idade da Lua: ");
+                            String luaId = scanner.nextLine();
+                            int idade = Integer.parseInt(luaId);
+                            Lua lun = new Lua(nome, massa, idade, raio, planeta);
+                            luas.add(lun);
+                            System.out.println("\nLua criada: " + nome);
+                        } else {
+                            System.out.println("\nÍndice Inválido.");
+                        }
+                    }
+                    break;
+
                     case 6:
-                    System.out.println("----- SPACE DATA -----");
+                    if (galaxias.isEmpty()){
+                        System.out.println("\nEspaço Vazio..., Literalmente.");
+                    } else {
+                    System.out.println("\n----- SPACE DATA -----");
                     for (Galaxia galaxia : galaxias) {
                         System.out.println(galaxia.descricao());
                     }
@@ -168,6 +209,13 @@ public class test {
                     }
                     for (Estrela estrela : estrelas) {
                         System.out.println(estrela.descricao());
+                    }
+                    for (Planeta planeta : planetas) {
+                        System.out.println(planeta.descricao());
+                    }
+                    for (Lua lua : luas) {
+                        System.out.println(lua.descricao());
+                    }
                     }
                     break;
 
