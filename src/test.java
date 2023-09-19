@@ -55,14 +55,14 @@ public class test {
                         scanner.nextLine();
 
                         if (galIndex >= 1 && galIndex <= galaxias.size()) {
-                            Galaxia galEsc = galaxias.get(galIndex - 1);
+                            Galaxia galaxia = galaxias.get(galIndex - 1);
 
                             System.out.print("\nDigite o nome do Sistema Solar: ");
-                            String solSisNome = scanner.nextLine();
-                            SistemaSolar solSis = new SistemaSolar(solSisNome, galEsc);
-                            galEsc.adicionarSistemaSolar(solSis);
+                            String nome = scanner.nextLine();
+                            SistemaSolar solSis = new SistemaSolar(nome, galaxia);
+                            galaxia.adicionarSistemaSolar(solSis);
                             sistemasSolares.add(solSis);
-                            System.out.println("\nSistema Solar criado: " + solSisNome);
+                            System.out.println("\nSistema Solar criado: " + nome);
                         } else {
                             System.out.println("\nÍndice Inválido.");
                         }
@@ -85,13 +85,16 @@ public class test {
                         scanner.nextLine();
 
                         if (sisSolIndex >= 1 && sisSolIndex <= sistemasSolares.size()) {
-                            SistemaSolar sisEsc = sistemasSolares.get(sisSolIndex - 1);
+                            SistemaSolar sistemaSolar = sistemasSolares.get(sisSolIndex - 1);
 
                             System.out.print("\nDigite o nome da Estrela: ");
                             String nome = scanner.nextLine();
                             System.out.print("Digite a massa da Estrela: ");
                             String estMas = scanner.nextLine();
-                            Double estMassa = Double.parseDouble(estMas);
+                            Double massa = Double.parseDouble(estMas);
+                            System.out.print("Digite o raio da Estrela: ");
+                            String estRar = scanner.nextLine();
+                            Double raio = Double.parseDouble(estRar);
                             System.out.print("Digite a idade da Estrela: ");
                             String estId = scanner.nextLine();
                             int idade = Integer.parseInt(estId);
@@ -100,10 +103,55 @@ public class test {
                             System.out.print("Digite a temperatura da Estrela: ");
                             String estTem = scanner.nextLine();
                             Double temperatura = Double.parseDouble(estTem);
-                            Estrela est = new Estrela(nome, estMassa, idade, tipoDeEstrela, temperatura, sisEsc);
-                            sisEsc.adicionarEstrela(est);
+                            Estrela est = new Estrela(nome, massa, raio, idade, tipoDeEstrela, temperatura, sistemaSolar);
+                            sistemaSolar.adicionarEstrela(est);
                             estrelas.add(est);
                             System.out.println("\nEstrela criada: " + nome);
+                        } else {
+                            System.out.println("\nÍndice Inválido.");
+                        }
+                    }
+                    break;
+
+                    case 4:
+                    if (estrelas.isEmpty()){
+                        System.out.println("\nNão existem Estrelas neste Espaço!");
+                    } else {
+                        System.out.println("\nSelecione em qual Estrela você deseja salvar o Planeta:\n");
+                        int index = 1;
+                        for (Estrela estrela : estrelas) {
+                            System.out.println(index + ". " + estrela.getNome());
+                            index++;
+                        }
+                        System.out.print("\nDigite o índice da Estrela desejada: ");
+
+                        int estIndex = scanner.nextInt();
+                        scanner.nextLine();
+
+                        if (estIndex >= 1 && estIndex <= estrelas.size()) {
+                            Estrela estrela = estrelas.get(estIndex - 1);
+
+                            System.out.print("\nDigite o nome do Planeta: ");
+                            String nome = scanner.nextLine();
+                            System.out.print("Digite a massa do Planeta: ");
+                            String plaMas = scanner.nextLine();
+                            Double massa = Double.parseDouble(plaMas);
+                            System.out.print("Digite a distância ao 'Sol' do Planeta: ");
+                            String plaDis = scanner.nextLine();
+                            Double distanciaAoSol = Double.parseDouble(plaDis);
+                            System.out.print("Digite o número de Luas do Planeta: ");
+                            String plaLua = scanner.nextLine();
+                            int numeroDeLuas = Integer.parseInt(plaLua);
+                            System.out.print("Digite o raio do Planeta: ");
+                            String plaRar = scanner.nextLine();
+                            Double raio = Double.parseDouble(plaRar);
+                            System.out.print("Digite a idade do Planeta: ");
+                            String plaId = scanner.nextLine();
+                            int idade = Integer.parseInt(plaId);
+                            Planeta plan = new Planeta(nome, massa, distanciaAoSol, numeroDeLuas, raio, idade, estrela);
+                            estrela.adicionarPlaneta(plan);
+                            planetas.add(plan);
+                            System.out.println("\nPlaneta criado: " + nome);
                         } else {
                             System.out.println("\nÍndice Inválido.");
                         }
@@ -147,14 +195,12 @@ public class test {
 
 
 /* A fazer
-Outras Classes(Sistema Solar, Galaxia)
-Menu
-Tratamento de erros(no menu talvez?)
+Menu (encaminhado)
+Tratamento de erros(no menu talvez?) (encaminhado)
 Revisao das formulas(?)
 Refatorar o codigo(gambiarra)
-Outros metodos ainda nao pensados
 Ver um jeito de melhorar as entradas
-Resolver bug das fontes(utf8)
+Resolver bug das fontes(utf8) (passar pra inglês?)
 Melhorar o metodo de exibição(função descrição)
 Passar o nome das classes para o ingles
 */
