@@ -219,35 +219,43 @@ public class test {
                     scanner.nextLine();
                     switch (opc) {
                         case 1:
-                        for (Galaxia galaxia : galaxias) {
-                        System.out.println(galaxia.descricao());
+                            for (Galaxia galaxia : galaxias) {
+                            System.out.println(galaxia.descricao());   
+                        }
                         break;
-                    }
+
                         case 2:
-                        for (SistemaSolar sistemaSolar : sistemasSolares) {
-                        System.out.println(sistemaSolar.descricao());
+                            for (SistemaSolar sistemaSolar : sistemasSolares) {
+                            System.out.println(sistemaSolar.descricao());
+                        }
                         break;
-                    }
+
                         case 3:
-                        for (Estrela estrela : estrelas) {
-                        System.out.println(estrela.descricao());
+                            for (Estrela estrela : estrelas) {
+                            System.out.println(estrela.descricao());
+                        }
                         break;
-                    }
+
                         case 4:
-                        for (Planeta planeta : planetas) {
-                        System.out.println(planeta.descricao());
+                            for (Planeta planeta : planetas) {
+                            System.out.println(planeta.descricao());
+                        }
                         break;
-                    }
+
                         case 5:
-                        for (Lua lua : luas) {
-                        System.out.println(lua.descricao());
+                            for (Lua lua : luas) {
+                            System.out.println(lua.descricao());
+                        }
                         break;
-                    }
+
                         case 6:
                         System.out.println("\nVoltando para o menu...");
                         break;
+
+                        default:
+                        System.out.println("\nOpção não disponível. Escolha um dos números indicados no menu!");
+                        break;
                     }
-                    
                     }
                     break;
 

@@ -55,7 +55,12 @@ public class Estrela extends CorpoCeleste implements Movimentavel, Gravitacional
 
     @Override
     public String descricao() {
-        return "Estrela do tipo " + tipoDeEstrela + " com temperatura de " + temperatura + " K.";
+        return "\nA estrela " + getNome() + ", do tipo " + getTipoDeEstrela() + ", existente a " + getIdade() 
+        + " bilhões de anos, tem uma massa de " + getMassa() + " kg, um raio de " + getRaio() + 
+        " km, com uma temperatura de " + getTemperatura() + " K, ela pertence ao sistema solar " + getSistemaSolar().getNome() 
+        + "\nInformações extras:" + "\n• Densidade: " + calcularDensidade() + " g/cm³"
+        + "\n• Volume: " + calcularVolume() + " km³" + "\n• Superfície: " + calcularSuperficie() + " km²"
+        + "\n• Gravidade: " + calcularGravidade() + " m/s²";
     }
 
     @Override

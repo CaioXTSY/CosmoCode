@@ -38,7 +38,11 @@ public class Lua extends CorpoCeleste implements Movimentavel, Gravitacional {
 
     @Override
     public String descricao() {
-        return "Lua orbitando o planeta " + planeta.getNome();
+        return "\nA lua " + getNome() + ", existente a " + getIdade() + " bilhões de anos, tem uma massa de " 
+        + getMassa() + " kg, um raio de " + getRaio() + " km, e orbita o planeta " + getPlaneta().getNome()
+        + "\nInformações extras:" + "\n• Densidade: " + calcularDensidade() + " g/cm³"
+        + "\n• Volume: " + calcularVolume() + " km³" + "\n• Superfície: " + calcularSuperficie() + " km²"
+        + "\n• Gravidade: " + calcularGravidade() + " m/s²";
     }
 
     @Override
