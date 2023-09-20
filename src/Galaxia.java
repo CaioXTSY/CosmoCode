@@ -33,4 +33,8 @@ public class Galaxia {
         }
         return descricao.toString();
     }
+
+    public void removerSistemaSolar(SistemaSolar sistemaSolar) {
+        this.sistemasSolares.remove(sistemaSolar);
+    }
 }

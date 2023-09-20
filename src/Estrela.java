@@ -107,4 +107,8 @@ public class Estrela extends CorpoCeleste implements Movimentavel, Gravitacional
     public void setRaio(double raio) {
         this.raio = raio;
     }
+
+    public void removerPlaneta(Planeta planeta) {
+        this.planetas.remove(planeta);
+    }
 }

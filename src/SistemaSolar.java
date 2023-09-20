@@ -44,4 +44,8 @@ public class SistemaSolar {
         }
         return descricao.toString();
     }
+
+    public void removerEstrela(Estrela estrela) {
+        this.estrelas.remove(estrela);
+    }
 }

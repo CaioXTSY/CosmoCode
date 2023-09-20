@@ -117,4 +117,12 @@ public class Planeta extends CorpoCeleste implements Movimentavel, Gravitacional
     public double calcularForcaGravitacional(CorpoCeleste outroCorpo) {
         return (6.67430e-11 * getMassa() * outroCorpo.getMassa()) / Math.pow(raio * 1000, 2);
     }
+
+    public void removerLua(CorpoCeleste lua) {
+        this.luas.remove(lua);
+    }
+
+    public String getEstrela() {
+        return getEstrelaOrbitada().getNome()
+    }
 }
