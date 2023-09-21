@@ -123,6 +123,6 @@ public class Planeta extends CorpoCeleste implements Movimentavel, Gravitacional
     }
 
     public String getEstrela() {
-        return getEstrelaOrbitada().getNome()
+        return getEstrelaOrbitada().getNome();
     }
 }
