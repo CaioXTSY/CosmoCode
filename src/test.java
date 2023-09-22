@@ -178,6 +178,34 @@ public class test {
                                             System.out.println(index + ". " + planeta.getNome());
                                             index++;
                                         }
+                                        System.out.print("\nDigite o índice do Planeta desejado: ");
+
+                                        int planIndex = scanner.nextInt();
+                                        scanner.nextLine();
+
+                                        if (planIndex >= 1 && planIndex <= planetas.size()){
+                                            Planeta planeta = planetas.get(planIndex - 1);
+
+                                            if (planeta.getLuas().size() >= planeta.getNumeroDeLuas()){
+                                                System.out.println("\nNúmero máximo de Luas atingido!");
+                                                break;
+                                            }
+
+                                            System.out.print("\nDigite o nome da Lua: ");
+                                            String name = scanner.nextLine();
+                                            System.out.print("Digite a massa da Lua: ");
+                                            double massa = scanner.nextDouble();
+                                            System.out.print("Digite a idade da Lua: ");
+                                            int idade = scanner.nextInt();
+                                            System.out.print("Digite o raio da Lua: ");
+                                            double raio = scanner.nextDouble();
+                                            Lua lun = new Lua(name, massa, idade, raio, planeta);
+                                            planeta.adicionarLua(lun);
+                                            luas.add(lun);
+                                            System.out.println("Lua criada: " + name);
+                                        } else {
+                                            System.out.println("\nÍndice inválido.");
+                                        }
                                     }
                                 }
                                     break;
