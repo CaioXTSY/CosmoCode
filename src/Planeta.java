@@ -12,7 +12,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Planeta extends CorpoCeleste implements Movimentavel, Gravitacional {
+public class Planeta extends CorpoCeleste implements Gravitacional {
     private Estrela estrelaOrbitada;
     private List<CorpoCeleste> luas;
     private double distanciaAoSol;
@@ -95,22 +95,6 @@ public class Planeta extends CorpoCeleste implements Movimentavel, Gravitacional
 
     public void setRaio(double raio) {
         this.raio = raio;
-    }
-
-    @Override
-    public void transladar(double deltaX, double deltaY, double deltaZ) {
-        distanciaAoSol += deltaX;
-    }
-
-    @Override
-    public void rotacionar(double angulo, String eixo) {
-        if (eixo.equals("x")) {
-            raio *= Math.cos(angulo);
-        } else if (eixo.equals("y")) {
-            raio *= Math.sin(angulo);
-        } else if (eixo.equals("z")) {
-            raio *= Math.tan(angulo);
-        }
     }
 
     @Override

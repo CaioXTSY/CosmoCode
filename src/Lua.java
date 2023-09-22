@@ -1,4 +1,4 @@
-public class Lua extends CorpoCeleste implements Movimentavel, Gravitacional {
+public class Lua extends CorpoCeleste implements Gravitacional {
     private double raio;
     private Planeta planeta;
 
@@ -43,22 +43,6 @@ public class Lua extends CorpoCeleste implements Movimentavel, Gravitacional {
         + "\nInformações extras:" + "\n• Densidade: " + calcularDensidade() + " g/cm³"
         + "\n• Volume: " + calcularVolume() + " km³" + "\n• Superfície: " + calcularSuperficie() + " km²"
         + "\n• Gravidade: " + calcularGravidade() + " m/s²";
-    }
-
-    @Override
-    public void transladar(double deltaX, double deltaY, double deltaZ) {
-        raio += deltaX;
-    }
-
-    @Override
-    public void rotacionar(double angulo, String eixo) {
-        if (eixo.equals("x")) {
-            raio *= Math.cos(angulo);
-        } else if (eixo.equals("y")) {
-            raio *= Math.sin(angulo);
-        } else if (eixo.equals("z")) {
-            raio *= Math.tan(angulo);
-        }
     }
 
     @Override
