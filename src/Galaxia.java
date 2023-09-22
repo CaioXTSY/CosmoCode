@@ -27,7 +27,7 @@ public class Galaxia {
     }
 
     public String descricao() {
-        StringBuilder descricao = new StringBuilder("Galáxia " + nome + " contém os seguintes sistemas solares:\n");
+        StringBuilder descricao = new StringBuilder("\nThe Galaxy " + nome + " has the following Solar Systems:\n");
         for (SistemaSolar sistemaSolar : sistemasSolares) {
             descricao.append("- ").append(sistemaSolar.getNome()).append("\n");
         }

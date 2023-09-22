@@ -42,7 +42,6 @@ O estudo e a simulação do universo 🌌 têm aplicações práticas em diversa
 - `CorpoCeleste`: Classe abstrata que contém campos como nome, massa e métodos.
 
 ### 🌀 Interfaces
-- `Movimentavel`: Define métodos para translação e rotação.
 - `Gravitacional`: Define métodos para calcular a força gravitacional entre corpos.
 
 ### 🌟 Classes Concretas
@@ -63,7 +62,6 @@ O estudo e a simulação do universo 🌌 têm aplicações práticas em diversa
 - `CorpoCeleste` fornece uma abstração de alto nível para todos os corpos celestes.
 
 ### 🔮 Polimorfismo
-- A interface `Movimentavel` permite diferentes implementações para os métodos de movimento.
 - A interface `Gravitacional` permite cálculos polimórficos de força gravitacional.
 
 ### 🎁 Encapsulamento

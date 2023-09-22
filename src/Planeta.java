@@ -66,11 +66,11 @@ public class Planeta extends CorpoCeleste implements Gravitacional {
 
     @Override
     public String descricao() {
-        return "\nO planeta " + getNome() + ", orbita a estrela " + getEstrelaOrbitada().getNome() + ", ele existe a " + getIdade() + " bilhões de anos e possui " + getNumeroDeLuas()
-        + " lua(s), tem uma massa de " + getMassa() + " kg, um raio de " + getRaio() + " km e sua distância com o Sol é de " 
-        + getDistanciaAoSol() + " UA." + "\nInformações extras:" + "\n• Densidade: " + calcularDensidade() + " g/cm³"
-        + "\n• Volume: " + calcularVolume() + " km³" + "\n• Superfície: " + calcularSuperficie() + " km²"
-        + "\n• Gravidade: " + calcularGravidade() + " m/s²";
+        return "\nThe Planet " + getNome() + ", orbits the Star " + getEstrelaOrbitada().getNome() + ", it exists since " + getIdade() + " billions of years ago and possesses " + getNumeroDeLuas()
+        + " Moon(s), its mass is of " + getMassa() + " Kgs, its radius of " + getRaio() + " Kms and its distance with its Sun is of " 
+        + getDistanciaAoSol() + " UA." + "\nExtra Info:" + "\n - Density: " + calcularDensidade() + " g/cm^3"
+        + "\n - Volume: " + calcularVolume() + " km^3" + "\n - Surface: " + calcularSuperficie() + " km²"
+        + "\n - Gravity: " + calcularGravidade() + " m/s²";
     }
 
     public double getDistanciaAoSol() {
