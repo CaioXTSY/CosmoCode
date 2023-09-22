@@ -38,7 +38,7 @@ public class SistemaSolar {
     }
 
     public String descricao() {
-        StringBuilder descricao = new StringBuilder("O Sistema Solar " + nome + " contém as seguintes estrelas:\n");
+        StringBuilder descricao = new StringBuilder("\nThe Solar System " + nome + " has the following Stars:\n");
         for (Estrela estrela : estrelas) {
             descricao.append("- ").append(estrela.getNome()).append("\n");
         }

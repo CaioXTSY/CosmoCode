@@ -38,11 +38,11 @@ public class Lua extends CorpoCeleste implements Gravitacional {
 
     @Override
     public String descricao() {
-        return "\nA lua " + getNome() + ", existente a " + getIdade() + " bilhões de anos, tem uma massa de " 
-        + getMassa() + " kg, um raio de " + getRaio() + " km, e orbita o planeta " + getPlaneta().getNome()
-        + "\nInformações extras:" + "\n• Densidade: " + calcularDensidade() + " g/cm³"
-        + "\n• Volume: " + calcularVolume() + " km³" + "\n• Superfície: " + calcularSuperficie() + " km²"
-        + "\n• Gravidade: " + calcularGravidade() + " m/s²";
+        return "\nThe Moon " + getNome() + ", existent since " + getIdade() + " billions of years, has a mass of " 
+        + getMassa() + " Kgs, its radius is " + getRaio() + " Kms, and it orbits the Planet " + getPlaneta().getNome() + "."
+        + "\nExtra Info:" + "\n - Density: " + calcularDensidade() + " g/cm^3"
+        + "\n - Volume: " + calcularVolume() + " km^3" + "\n - Surface: " + calcularSuperficie() + " km²"
+        + "\n - Gravity: " + calcularGravidade() + " m/s²";
     }
 
     @Override

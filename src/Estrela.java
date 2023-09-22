@@ -55,12 +55,12 @@ public class Estrela extends CorpoCeleste implements Gravitacional {
 
     @Override
     public String descricao() {
-        return "\nA estrela " + getNome() + ", do tipo " + getTipoDeEstrela() + ", existente a " + getIdade() 
-        + " bilhões de anos, tem uma massa de " + getMassa() + " kg, um raio de " + getRaio() + 
-        " km, com uma temperatura de " + getTemperatura() + " K, ela pertence ao sistema solar " + getSistemaSolar().getNome() 
-        + "\nInformações extras:" + "\n• Densidade: " + calcularDensidade() + " g/cm³"
-        + "\n• Volume: " + calcularVolume() + " km³" + "\n• Superfície: " + calcularSuperficie() + " km²"
-        + "\n• Gravidade: " + calcularGravidade() + " m/s²";
+        return "\nThe Star " + getNome() + ", of the type " + getTipoDeEstrela() + ", has existed for " + getIdade() 
+        + " billions of years, it has a mass of " + getMassa() + " Kgs, its radius is of " + getRaio() + 
+        " Kms, and its temperature is " + getTemperatura() + " K, she belongs to the Solar System " + getSistemaSolar().getNome() + "."
+        + "\nExtra Info:" + "\n - Density: " + calcularDensidade() + " g/cm^3"
+        + "\n - Volume: " + calcularVolume() + " km^3" + "\n - Surface: " + calcularSuperficie() + " km²"
+        + "\n - Gravity: " + calcularGravidade() + " m/s²";
     }
 
     @Override

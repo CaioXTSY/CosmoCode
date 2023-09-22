@@ -15,13 +15,11 @@ public class test {
             try {
                 System.out.println("\n-----SPACE EXPO-----");
                 System.out.println("\n---MENU---:");
-                System.out.println("1 - Add Celestial Bodyes");
-                System.out.println("2 - Remove Celestial Bodyes");
-                System.out.println("3 - Method 1");
-                System.out.println("4 - Method 2");
-                System.out.println("5 - Method 3");
-                System.out.println("6 - View Celestial Bodyes");
-                System.out.println("7 - Exit");
+                System.out.println("1 - Add Celestial Bodies");
+                System.out.println("2 - Remove Celestial Bodies");
+                System.out.println("3 - Calculate Gravitacional Strength");
+                System.out.println("4 - View Celestial Bodies");
+                System.out.println("5 - Exit");
                 System.out.print("Enter your option: ");
                 Scanner scanner = new Scanner(System.in);
                 int op = scanner.nextInt();
@@ -30,13 +28,13 @@ public class test {
                 switch (op) {
 
                     case 1:
-                        System.out.println("\n-----ADD CELESTIAL BODYES-----");
+                        System.out.println("\n-----ADD CELESTIAL BODIES-----");
                         System.out.println("1 - Add Galaxy");
                         System.out.println("2 - Add Solar System");
                         System.out.println("3 - Add Star");
                         System.out.println("4 - Add Planet");
                         System.out.println("5 - Add Moon");
-                        System.out.print("Enter your option  ");
+                        System.out.print("Enter your option: ");
                         int subOp = scanner.nextInt();
                         scanner.nextLine();
 
@@ -46,7 +44,7 @@ public class test {
                                 String nome = scanner.nextLine();
                                 Galaxia gal = new Galaxia(nome);
                                 galaxias.add(gal);
-                                System.out.println("\nGaláxia criada: " + nome);
+                                System.out.println("\nGalaxy created: " + nome);
                                 break;
 
                             case 2:
@@ -222,9 +220,9 @@ public class test {
                         scanner.nextLine();
                         if (removeOp == 1) {
                             if (galaxias.isEmpty()) {
-                                System.out.println("There are no galaxies to remove.");
+                                System.out.println("\nThere are no galaxies to remove.");
                             } else {
-                                System.out.println("Escolha a galáxia para remover:");
+                                System.out.println("\nChoose the Galaxy to remove:\n");
                                 int index = 1;
                                 for (Galaxia galaxia: galaxias) {
                                     System.out.println(index + ". " + galaxia.getNome());
@@ -238,9 +236,9 @@ public class test {
                             }
                         } else if (removeOp == 2) {
                             if (sistemasSolares.isEmpty()) {
-                                System.out.println("There are no solar systems to remove.");
+                                System.out.println("\nThere are no solar systems to remove.");
                             } else {
-                                System.out.println("Choose the solar system to remove:");
+                                System.out.println("\nChoose the solar system to remove:\n");
                                 int index = 1;
                                 for (SistemaSolar sistemaSolar: sistemasSolares) {
                                     System.out.println(index + ". " + sistemaSolar.getNome());
@@ -255,9 +253,9 @@ public class test {
                             }
                         } else if (removeOp == 3) {
                             if (estrelas.isEmpty()) {
-                                System.out.println("There are no stars to remove.");
+                                System.out.println("\nThere are no stars to remove.");
                             } else {
-                                System.out.println("choose the star to remove:");
+                                System.out.println("\nChoose the star to remove:\n");
                                 int index = 1;
                                 for (Estrela estrela: estrelas) {
                                     System.out.println(index + ". " + estrela.getNome());
@@ -272,9 +270,9 @@ public class test {
                             }
                         } else if (removeOp == 4) {
                             if (planetas.isEmpty()) {
-                                System.out.println("There are no planets to remove.");
+                                System.out.println("\nThere are no planets to remove.");
                             } else {
-                                System.out.println("choose the planet to remove:");
+                                System.out.println("\nChoose the planet to remove:\n");
                                 int index = 1;
                                 for (Planeta planeta: planetas) {
                                     System.out.println(index + ". " + planeta.getNome());
@@ -289,9 +287,9 @@ public class test {
                             }
                         } else if (removeOp == 5) {
                             if (luas.isEmpty()) {
-                                System.out.println("There are no moons to remove.");
+                                System.out.println("\nThere are no moons to remove.");
                             } else {
-                                System.out.println("choose the moon to remove:");
+                                System.out.println("\nChoose the moon to remove:\n");
                                 int index = 1;
                                 for (Lua lua: luas) {
                                     System.out.println(index + ". " + lua.getNome());
@@ -306,11 +304,12 @@ public class test {
                             }
                         }
                         break;
+                        
                     case 3:
                         if (sistemasSolares.isEmpty()) {
                             System.out.println("\nThere are no Solar Systems in this Space!");
                         } else {
-                            System.out.println("\nSelect a Solar System:");
+                            System.out.println("\nSelect a Solar System:\n");
 
                             int index = 1;
                             for (SistemaSolar sistemaSolar: sistemasSolares) {
@@ -318,7 +317,7 @@ public class test {
                                 index++;
                             }
 
-                            System.out.print("\nEnter the index of the Solar System: ");
+                            System.out.print("\nEnter the index of the Solar System:");
                             int sisIndex = scanner.nextInt();
                             scanner.nextLine();
 
@@ -329,7 +328,7 @@ public class test {
                                 if (availableStars.isEmpty()) {
                                     System.out.println("\nNo stars available in the selected Solar System.");
                                 } else {
-                                    System.out.println("\nSelect a Star from the Solar System:");
+                                    System.out.println("\nSelect a Star from the Solar System:\n");
                                     index = 1;
                                     for (Estrela estrela: availableStars) {
                                         System.out.println(index + ". Star: " + estrela.getNome());
@@ -344,7 +343,7 @@ public class test {
                                     if (availablePlanets.isEmpty()) {
                                         System.out.println("\nNo planets available for the selected Star.");
                                     } else {
-                                        System.out.println("\nSelect a Planet from the Star:");
+                                        System.out.println("\nSelect a Planet from the Star:\n");
                                         index = 1;
                                         for (Planeta planeta: availablePlanets) {
                                             System.out.println(index + ". Planet: " + planeta.getNome());
@@ -357,7 +356,7 @@ public class test {
 
                                         List < CorpoCeleste > availableMoons = selectedPlanet.getLuas();
 
-                                        System.out.println("\nSelect two celestial bodies (another planet or moon of the selected planet) to calculate the gravitational force between them:");
+                                        System.out.println("\nSelect two celestial bodies (another planet or moon of the selected planet) to calculate the gravitational force between them:\n");
                                         index = 1;
                                         for (Planeta planeta: availablePlanets) {
                                             System.out.println(index + ". Planet: " + planeta.getNome());
@@ -389,31 +388,29 @@ public class test {
                         break;
 
                     case 4:
-                        // fazer depois
-                        break;
-                    case 5:
-                        // fazer depois
-                        break;
-                    case 6:
                         listarAstros(scanner);
                         break;
-                    case 7:
+
+                    case 5:
                         System.out.println("\nExiting...");
                         System.exit(0);
                         break;
+
                     default:
                         System.out.println("\nOption not available. Choose one of the numbers indicated in the menu!");
                         break;
                 }
             } catch (InputMismatchException e) {
                 System.out.println("\nInvalid input. Please enter a number.");
+            } catch (Exception e) {
+                System.out.println("\nAn unexpected error ocurred: " + e.getMessage());
             }
         }
 
     }
     private static void listarAstros(Scanner scanner) {
         if (galaxias.isEmpty()) {
-            System.out.println("\nThere are no Galaxies in this Space!");
+            System.out.println("\nThe Space is Empty!");
         } else {
             System.out.println("\n----- SPACE DATA -----");
             System.out.println("\nChoose the Celestial Body to view:");
