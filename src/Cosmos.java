@@ -221,6 +221,28 @@ public class Cosmos {
                     
                     switch (removalChoice) {
                         case 1:
+                            if (galaxias.isEmpty()) {
+                                System.out.println("\nThere are no Galaxies in this Space!");
+                            } else {
+                                System.out.println("\nSelect which Galaxy you want to remove:\n");
+                                int index = 1;
+                                for (Galaxia galaxia : galaxias) {
+                                    System.out.println(index + ". " + galaxia.getNome());
+                                    index++;
+                                }
+                                System.out.print("\nEnter the index of the Galaxy to remove: ");
+                                int galIndex = scanner.nextInt();
+                                scanner.nextLine();
+                
+                                if (galIndex >= 1 && galIndex <= galaxias.size()) {
+                                    galaxias.remove(galIndex - 1);
+                                    System.out.println("\nGalaxy removed successfully.");
+                                } else {
+                                    System.out.println("\nInvalid Index.");
+                                }
+                            }
+                            break;
+                        case 2:
                             if (sistemasSolares.isEmpty()) {
                                 System.out.println("\nThere are no Solar Systems to remove!");
                             } else {
@@ -256,7 +278,7 @@ public class Cosmos {
                             }
                             break;
                     
-                        case 2:
+                        case 3:
                             if (estrelas.isEmpty()) {
                                 System.out.println("\nThere are no Stars to remove!");
                             } else {
@@ -289,7 +311,7 @@ public class Cosmos {
                             }
                             break;
                     
-                        case 3:
+                        case 4:
                             if (planetas.isEmpty()) {
                                 System.out.println("\nThere are no Planets to remove!");
                             } else {
@@ -320,7 +342,7 @@ public class Cosmos {
                              
                             break;
                     
-                        case 4:
+                        case 5:
                             if (luas.isEmpty()) {
                                 System.out.println("\nThere are no Moons to remove!");
                             } else {
@@ -344,7 +366,7 @@ public class Cosmos {
                             }
                             break;
                         
-                        case 5:
+                        case 6:
                             System.out.println("\nReturning to the menu...");
                             break;
                     
@@ -352,28 +374,25 @@ public class Cosmos {
                             System.out.println("\nInvalid choice. Returning to main menu.");
                             break;
                     }
-                    break;
-
                     case 3:
                         if (sistemasSolares.isEmpty()) {
                             System.out.println("\nThere are no Solar Systems in this Space!");
                         } else {
                             System.out.println("\nSelect a Solar System:\n");
-
                             int index = 1;
                             for (SistemaSolar sistemaSolar: sistemasSolares) {
                                 System.out.println(index + ". " + sistemaSolar.getNome());
                                 index++;
                             }
-
+                        
                             System.out.print("\nEnter the index of the Solar System:");
                             int sisIndex = scanner.nextInt();
                             scanner.nextLine();
-
+                        
                             if (sisIndex >= 1 && sisIndex <= sistemasSolares.size()) {
                                 SistemaSolar selectedSolarSystem = sistemasSolares.get(sisIndex - 1);
-                                List < Estrela > availableStars = selectedSolarSystem.getEstrelas();
-
+                                List<Estrela> availableStars = selectedSolarSystem.getEstrelas();
+                        
                                 if (availableStars.isEmpty()) {
                                     System.out.println("\nNo stars available in the selected Solar System.");
                                 } else {
@@ -383,52 +402,36 @@ public class Cosmos {
                                         System.out.println(index + ". Star: " + estrela.getNome());
                                         index++;
                                     }
-
+                        
                                     System.out.print("\nEnter the index of the Star: ");
                                     int starIndex = scanner.nextInt();
                                     Estrela selectedStar = availableStars.get(starIndex - 1);
-
-                                    List < Planeta > availablePlanets = selectedStar.getPlanetas();
-                                    if (availablePlanets.isEmpty()) {
-                                        System.out.println("\nNo planets available for the selected Star.");
-                                    } else {
-                                        System.out.println("\nSelect a Planet from the Star:\n");
-                                        index = 1;
-                                        for (Planeta planeta: availablePlanets) {
-                                            System.out.println(index + ". Planet: " + planeta.getNome());
-                                            index++;
-                                        }
-
-                                        System.out.print("\nEnter the index of the Planet: ");
-                                        int planetIndex = scanner.nextInt();
-                                        Planeta selectedPlanet = availablePlanets.get(planetIndex - 1);
-
-                                        List < CorpoCeleste > availableMoons = selectedPlanet.getLuas();
-
-                                        System.out.println("\nSelect two celestial bodies (another planet or moon of the selected planet) to calculate the gravitational force between them:\n");
-                                        index = 1;
-                                        for (Planeta planeta: availablePlanets) {
-                                            System.out.println(index + ". Planet: " + planeta.getNome());
-                                            index++;
-                                        }
-
-                                        for (CorpoCeleste lua: availableMoons) {
-                                            System.out.println(index + ". Moon: " + lua.getNome());
-                                            index++;
-                                        }
-
-                                        System.out.print("\nEnter the index of the first celestial body: ");
-                                        int firstBodyIndex = scanner.nextInt();
-                                        System.out.print("\nEnter the index of the second celestial body: ");
-                                        int secondBodyIndex = scanner.nextInt();
-                                        scanner.nextLine();
-
-                                        CorpoCeleste firstBody = (firstBodyIndex <= availablePlanets.size()) ? availablePlanets.get(firstBodyIndex - 1) : availableMoons.get(firstBodyIndex - availablePlanets.size() - 1);
-                                        CorpoCeleste secondBody = (secondBodyIndex <= availablePlanets.size()) ? availablePlanets.get(secondBodyIndex - 1) : availableMoons.get(secondBodyIndex - availablePlanets.size() - 1);
-
-                                        double F = (6.674e-11 * firstBody.getMassa() * secondBody.getMassa()) / (1 * 1);
-                                        System.out.println("\nThe gravitational force between " + firstBody.getNome() + " and " + secondBody.getNome() + " is: " + F + " N.");
+                                    List<Planeta> availablePlanets = selectedStar.getPlanetas();
+                        
+                                    System.out.println("\nSelect two celestial bodies (planet or moon) to calculate the gravitational force between them:\n");
+                                    index = 1;
+                                    for (Planeta planeta: availablePlanets) {
+                                        System.out.println(index + ". Planet: " + planeta.getNome());
+                                        index++;
                                     }
+                        
+                                    List<CorpoCeleste> availableMoons = selectedStar.getPlanetas().get(0).getLuas();
+                                    for (CorpoCeleste lua: availableMoons) {
+                                        System.out.println(index + ". Moon: " + lua.getNome());
+                                        index++;
+                                    }
+                        
+                                    System.out.print("\nEnter the index of the first celestial body: ");
+                                    int firstBodyIndex = scanner.nextInt();
+                                    System.out.print("\nEnter the index of the second celestial body: ");
+                                    int secondBodyIndex = scanner.nextInt();
+                                    scanner.nextLine();
+                        
+                                    CorpoCeleste firstBody = (firstBodyIndex <= availablePlanets.size()) ? availablePlanets.get(firstBodyIndex - 1) : availableMoons.get(firstBodyIndex - availablePlanets.size() - 1);
+                                    CorpoCeleste secondBody = (secondBodyIndex <= availablePlanets.size()) ? availablePlanets.get(secondBodyIndex - 1) : availableMoons.get(secondBodyIndex - availablePlanets.size() - 1);
+                        
+                                    double F = (6.674e-11 * firstBody.getMassa() * secondBody.getMassa()) / (1 * 1);
+                                    System.out.println("\nThe gravitational force between " + firstBody.getNome() + " and " + secondBody.getNome() + " is: " + F + " N.");
                                 }
                             } else {
                                 System.out.println("\nInvalid Solar System index.");
