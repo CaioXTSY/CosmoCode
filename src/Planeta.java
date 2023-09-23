@@ -67,7 +67,7 @@ public class Planeta extends CorpoCeleste implements Gravitacional {
     @Override
     public String descricao() {
         return "\nThe Planet " + getNome() + ", orbits the Star " + getEstrelaOrbitada().getNome() + ", it exists since " + getIdade() + " billions of years ago and possesses " + getNumeroDeLuas()
-        + " Moon(s), its mass is of " + getMassa() + " Kgs, its radius of " + getRaio() + " Kms and its distance with its Sun is of " 
+        + " Moon(s), its mass is of " + getMassa() + " Kgs, its radius of " + getRaio() + " Kms and its distance from its Sun is of " 
         + getDistanciaAoSol() + " UA." + "\nExtra Info:" + "\n - Density: " + calcularDensidade() + " g/cm^3"
         + "\n - Volume: " + calcularVolume() + " km^3" + "\n - Surface: " + calcularSuperficie() + " km²"
         + "\n - Gravity: " + calcularGravidade() + " m/s²";

@@ -352,6 +352,8 @@ public class Cosmos {
                             System.out.println("\nInvalid choice. Returning to main menu.");
                             break;
                     }
+                    break;
+
                     case 3:
                         if (sistemasSolares.isEmpty()) {
                             System.out.println("\nThere are no Solar Systems in this Space!");
