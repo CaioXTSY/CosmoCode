@@ -35,6 +35,16 @@ public class Galaxia {
     }
 
     public void removerSistemaSolar(SistemaSolar sistemaSolar) {
+        for (Estrela estrela : sistemaSolar.getEstrelas()) {
+            for (Planeta planeta : estrela.getPlanetas()) {
+                for (CorpoCeleste corpo : planeta.getLuas()) {
+                    Lua lua = (Lua) corpo;
+                    planeta.removerLua(lua);
+                }
+                estrela.removerPlaneta(planeta);
+            }
+            sistemaSolar.removerEstrela(estrela);
+        }
         this.sistemasSolares.remove(sistemaSolar);
     }
 }

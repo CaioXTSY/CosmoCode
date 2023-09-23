@@ -46,6 +46,13 @@ public class SistemaSolar {
     }
 
     public void removerEstrela(Estrela estrela) {
+        for (Planeta planeta : estrela.getPlanetas()) {
+            for (CorpoCeleste corpo : planeta.getLuas()) {
+                Lua lua = (Lua) corpo;
+                planeta.removerLua(lua);
+            }
+            estrela.removerPlaneta(planeta);
+        }
         this.estrelas.remove(estrela);
     }
 }

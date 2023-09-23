@@ -1,6 +1,9 @@
+import java.util.List;
+
 public class Lua extends CorpoCeleste implements Gravitacional {
     private double raio;
     private Planeta planeta;
+    private List<CorpoCeleste> luas;
 
     public Lua(String nome, double massa, int idade, double raio, Planeta planeta) {
         super(nome, massa, idade);
@@ -56,5 +59,13 @@ public class Lua extends CorpoCeleste implements Gravitacional {
 
     public void setRaio(double raio) {
         this.raio = raio;
+    }
+
+    public void removerLua(CorpoCeleste lua) {
+        this.luas.remove(lua);
+    }
+
+    public List<CorpoCeleste> getLuas() {
+        return luas;
     }
 }

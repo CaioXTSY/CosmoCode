@@ -3,7 +3,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-public class test {
+public class Cosmos {
 
     private static List < Galaxia > galaxias = new ArrayList < > ();
     private static List < SistemaSolar > sistemasSolares = new ArrayList < > ();
@@ -67,8 +67,7 @@ public class test {
 
                                         System.out.print("\nEnter the name of the Solar System: ");
                                         String name = scanner.nextLine();
-                                        SistemaSolar solSis = new SistemaSolar(name, galaxia);
-                                        galaxia.adicionarSistemaSolar(solSis);
+                                        SistemaSolar solSis = new SistemaSolar(name, galaxia);      
                                         sistemasSolares.add(solSis);
                                         System.out.println("\nSolar System created: " + name);
                                     } else {
@@ -209,102 +208,150 @@ public class test {
                         break;
 
                     case 2:
-                        System.out.println("Choose the Celestial Body to remove:");
-                        System.out.println("1 - Galaxy");
-                        System.out.println("2 - Solar System");
-                        System.out.println("3 - Star");
-                        System.out.println("4 - Planet");
-                        System.out.println("5 - Moon");
-                        System.out.print("Enter your option: ");
-                        int removeOp = scanner.nextInt();
-                        scanner.nextLine();
-                        if (removeOp == 1) {
-                            if (galaxias.isEmpty()) {
-                                System.out.println("\nThere are no galaxies to remove.");
-                            } else {
-                                System.out.println("\nChoose the Galaxy to remove:\n");
-                                int index = 1;
-                                for (Galaxia galaxia: galaxias) {
-                                    System.out.println(index + ". " + galaxia.getNome());
-                                    index++;
-                                }
-                                int galIndex = scanner.nextInt();
-                                scanner.nextLine();
-                                Galaxia galaxia = galaxias.get(galIndex - 1);
-                                galaxias.remove(galaxia);
-                                System.out.println("Galaxy removed.");
-                            }
-                        } else if (removeOp == 2) {
+                    System.out.println("\nSelect the type of Celestial Body to remove:");
+                    System.out.println("1. Solar System");
+                    System.out.println("2. Star");
+                    System.out.println("3. Planet");
+                    System.out.println("4. Moon");
+                    System.out.println("5. Exit");
+                    System.out.print("Enter your choice: ");
+                    
+                    int removalChoice = scanner.nextInt();
+                    scanner.nextLine();
+                    
+                    switch (removalChoice) {
+                        case 1:
                             if (sistemasSolares.isEmpty()) {
-                                System.out.println("\nThere are no solar systems to remove.");
+                                System.out.println("\nThere are no Solar Systems to remove!");
                             } else {
-                                System.out.println("\nChoose the solar system to remove:\n");
+                                System.out.println("\nSelect the Solar System to remove:");
                                 int index = 1;
-                                for (SistemaSolar sistemaSolar: sistemasSolares) {
+                                for (SistemaSolar sistemaSolar : sistemasSolares) {
                                     System.out.println(index + ". " + sistemaSolar.getNome());
                                     index++;
                                 }
-                                int sisIndex = scanner.nextInt();
+                                System.out.print("\nEnter the index of the Solar System to remove: ");
+                                int ssIndex = scanner.nextInt();
                                 scanner.nextLine();
-                                SistemaSolar sistemaSolar = sistemasSolares.get(sisIndex - 1);
-                                sistemasSolares.remove(sistemaSolar);
-                                sistemaSolar.getGalaxia().removerSistemaSolar(sistemaSolar);
-                                System.out.println("Solar System removed.");
+                                
+                                if (ssIndex >= 1 && ssIndex <= sistemasSolares.size()) {
+                                    SistemaSolar toRemove = sistemasSolares.get(ssIndex - 1);
+                                    
+                                    for (Estrela estrela : toRemove.getEstrelas()) {
+                                        for (Planeta planeta : estrela.getPlanetas()) {
+                                            for (CorpoCeleste corpo : planeta.getLuas()) {
+                                                Lua lua = (Lua) corpo;
+                                                luas.remove(lua);
+                                            }
+                                            planetas.remove(planeta);
+                                        }
+                                        estrelas.remove(estrela);
+                                    }
+                                    
+                                    sistemasSolares.remove(toRemove);
+                                    System.out.println("\nSolar System removed successfully!");
+                                } else {
+                                    System.out.println("\nInvalid index. Returning to removal menu.");
+                                }
                             }
-                        } else if (removeOp == 3) {
+                            break;
+                    
+                        case 2:
                             if (estrelas.isEmpty()) {
-                                System.out.println("\nThere are no stars to remove.");
+                                System.out.println("\nThere are no Stars to remove!");
                             } else {
-                                System.out.println("\nChoose the star to remove:\n");
+                                System.out.println("\nSelect the Star to remove:");
                                 int index = 1;
-                                for (Estrela estrela: estrelas) {
+                                for (Estrela estrela : estrelas) {
                                     System.out.println(index + ". " + estrela.getNome());
                                     index++;
                                 }
-                                int estIndex = scanner.nextInt();
+                                System.out.print("\nEnter the index of the Star to remove: ");
+                                int starIndex = scanner.nextInt();
                                 scanner.nextLine();
-                                Estrela estrela = estrelas.get(estIndex - 1);
-                                estrelas.remove(estrela);
-                                estrela.getSistemaSolar().removerEstrela(estrela);
-                                System.out.println("Star removed.");
+                                
+                                if (starIndex >= 1 && starIndex <= estrelas.size()) {
+                                    Estrela toRemove = estrelas.get(starIndex - 1);
+                                    
+                                    for (Planeta planeta : toRemove.getPlanetas()) {
+                                        for (CorpoCeleste corpo : planeta.getLuas()) {
+                                            Lua lua = (Lua) corpo;
+                                            luas.remove(lua);
+                                        }
+                                        planetas.remove(planeta);
+                                    }
+                                    
+                                    estrelas.remove(toRemove);
+                                    System.out.println("\nStar removed successfully!");
+                                } else {
+                                    System.out.println("\nInvalid index. Returning to removal menu.");
+                                }
                             }
-                        } else if (removeOp == 4) {
+                            break;
+                    
+                        case 3:
                             if (planetas.isEmpty()) {
-                                System.out.println("\nThere are no planets to remove.");
+                                System.out.println("\nThere are no Planets to remove!");
                             } else {
-                                System.out.println("\nChoose the planet to remove:\n");
+                                System.out.println("\nSelect the Planet to remove:");
                                 int index = 1;
-                                for (Planeta planeta: planetas) {
+                                for (Planeta planeta : planetas) {
                                     System.out.println(index + ". " + planeta.getNome());
                                     index++;
                                 }
-                                int plaIndex = scanner.nextInt();
+                                System.out.print("\nEnter the index of the Planet to remove: ");
+                                int planetIndex = scanner.nextInt();
                                 scanner.nextLine();
-                                Planeta planeta = planetas.get(plaIndex - 1);
-                                planetas.remove(planeta);
-                                // planeta.getEstrela().removerPlaneta(planeta); ta bugado(?)
-                                System.out.println("Planet removed.");
+                                
+                                if (planetIndex >= 1 && planetIndex <= planetas.size()) {
+                                    Planeta toRemove = planetas.get(planetIndex - 1);
+                                    
+                                    for (CorpoCeleste corpo : toRemove.getLuas()) {
+                                        Lua lua = (Lua) corpo;
+                                        luas.remove(lua);
+                                    }
+                                    
+                                    planetas.remove(toRemove);
+                                    System.out.println("\nPlanet removed successfully!");
+                                } else {
+                                    System.out.println("\nInvalid index. Returning to removal menu.");
+                                }
                             }
-                        } else if (removeOp == 5) {
+                             
+                            break;
+                    
+                        case 4:
                             if (luas.isEmpty()) {
-                                System.out.println("\nThere are no moons to remove.");
+                                System.out.println("\nThere are no Moons to remove!");
                             } else {
-                                System.out.println("\nChoose the moon to remove:\n");
+                                System.out.println("\nSelect the Moon to remove:");
                                 int index = 1;
-                                for (Lua lua: luas) {
+                                for (Lua lua : luas) {
                                     System.out.println(index + ". " + lua.getNome());
                                     index++;
                                 }
-                                int luaIndex = scanner.nextInt();
+                                System.out.print("\nEnter the index of the Moon to remove: ");
+                                int moonIndex = scanner.nextInt();
                                 scanner.nextLine();
-                                Lua lua = luas.get(luaIndex - 1);
-                                luas.remove(lua);
-                                lua.getPlaneta().removerLua(lua);
-                                System.out.println("Moon removed.");
+                                
+                                if (moonIndex >= 1 && moonIndex <= luas.size()) {
+                                    Lua toRemove = luas.get(moonIndex - 1);
+                                    luas.remove(toRemove);
+                                    System.out.println("\nMoon removed successfully!");
+                                } else {
+                                    System.out.println("\nInvalid index. Returning to removal menu.");
+                                }
                             }
-                        }
-                        break;
+                            break;
                         
+                        case 5:
+                            System.out.println("\nReturning to the menu...");
+                            break;
+                    
+                        default:
+                            System.out.println("\nInvalid choice. Returning to main menu.");
+                            break;
+                    }
                     case 3:
                         if (sistemasSolares.isEmpty()) {
                             System.out.println("\nThere are no Solar Systems in this Space!");
@@ -458,6 +505,7 @@ public class test {
             }
         }
     }
+    
 }
 
 

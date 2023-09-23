@@ -93,6 +93,10 @@ public class Estrela extends CorpoCeleste implements Gravitacional {
     }
 
     public void removerPlaneta(Planeta planeta) {
+        for (CorpoCeleste corpo : planeta.getLuas()) {
+            Lua lua = (Lua) corpo;
+            planeta.removerLua(lua);
+        }
         this.planetas.remove(planeta);
     }
 }
