@@ -531,15 +531,3 @@ public class Cosmos {
     }
     
 }
-
-
-
-
-/* A fazer
-Menu (encaminhado)
-Tratamento de erros(no menu talvez?) (concluido?)
-Ver um jeito de melhorar as entradas
-Resolver bug das fontes(utf8) (passar pra inglês?) (feito)
-Melhorar o metodo de exibição(função descrição) (encaminhado)
-Passar o nome das classes para o ingles
-*/
