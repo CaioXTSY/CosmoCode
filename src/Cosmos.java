@@ -20,6 +20,7 @@ public class Cosmos {
                 System.out.println("3 - Calculate Gravitacional Strength");
                 System.out.println("4 - View Celestial Bodies");
                 System.out.println("5 - Exit");
+                System.out.println("\nNote: When asked about some inputs, it's recommended you use the scientific notation (e notation) due to the size of the actual numbers.");
                 System.out.print("Enter your option: ");
                 Scanner scanner = new Scanner(System.in);
                 int op = scanner.nextInt();
@@ -96,18 +97,18 @@ public class Cosmos {
 
                                         System.out.print("\nEnter the name of the Star: ");
                                         String name = scanner.nextLine();
-                                        System.out.print("Enter the mass of the Star: ");
+                                        System.out.print("Enter the mass of the Star (Ex: 5.972e24)): ");
                                         String estMas = scanner.nextLine();
                                         Double massa = Double.parseDouble(estMas);
-                                        System.out.print("Enter the radius of the Star: ");
+                                        System.out.print("Enter the radius of the Star (Ex: 6.371e6): ");
                                         String estRar = scanner.nextLine();
                                         Double raio = Double.parseDouble(estRar);
-                                        System.out.print("Enter the age of the Star: ");
+                                        System.out.print("Enter the age of the Star (Ex: 4.603e9): ");
                                         String estId = scanner.nextLine();
-                                        int idade = Integer.parseInt(estId);
+                                        Double idade = Double.parseDouble(estId);
                                         System.out.print("Enter the type of the Star: ");
                                         String tipoDeEstrela = scanner.nextLine();
-                                        System.out.print("Enter the temperature of the Star: ");
+                                        System.out.print("Enter the temperature of the Star (Ex: 5.778e3): ");
                                         String estTem = scanner.nextLine();
                                         Double temperatura = Double.parseDouble(estTem);
                                         Estrela est = new Estrela(name, massa, raio, idade, tipoDeEstrela, temperatura, sistemaSolar);
@@ -140,21 +141,21 @@ public class Cosmos {
 
                                         System.out.print("\nEnter the name of the Planet: ");
                                         String name = scanner.nextLine();
-                                        System.out.print("Enter the mass of the Planet: ");
+                                        System.out.print("Enter the mass of the Planet (Ex: 5.778e3): ");
                                         String plaMas = scanner.nextLine();
                                         Double massa = Double.parseDouble(plaMas);
-                                        System.out.print("Enter the distance to the 'Sun' of the Planet: ");
+                                        System.out.print("Enter the distance to the 'Sun' of the Planet (Ex: 1.496e11): ");
                                         String plaDis = scanner.nextLine();
                                         Double distanciaAoSol = Double.parseDouble(plaDis);
                                         System.out.print("Enter the number of Moons for the Planet: ");
                                         String plaLua = scanner.nextLine();
                                         int numeroDeLuas = Integer.parseInt(plaLua);
-                                        System.out.print("Enter the radius of the Planet: ");
+                                        System.out.print("Enter the radius of the Planet (Ex: 5.778e3): ");
                                         String plaRar = scanner.nextLine();
                                         Double raio = Double.parseDouble(plaRar);
-                                        System.out.print("Enter the age of the Planet: ");
+                                        System.out.print("Enter the age of the Planet (Ex: 5.778e3): ");
                                         String plaId = scanner.nextLine();
-                                        int idade = Integer.parseInt(plaId);
+                                        Double idade = Double.parseDouble(plaId);
                                         Planeta plan = new Planeta(name, massa, distanciaAoSol, numeroDeLuas, raio, idade, estrela);
                                         estrela.adicionarPlaneta(plan);
                                         planetas.add(plan);
@@ -190,11 +191,11 @@ public class Cosmos {
 
                                         System.out.print("\nEnter the name of the Moon: ");
                                         String name = scanner.nextLine();
-                                        System.out.print("Enter the mass of the Moon: ");
+                                        System.out.print("Enter the mass of the Moon (Ex: 5.778e3): ");
                                         double massa = scanner.nextDouble();
-                                        System.out.print("Enter the age of the Moon: ");
-                                        int idade = scanner.nextInt();
-                                        System.out.print("Enter the radius of the Moon: ");
+                                        System.out.print("Enter the age of the Moon (Ex: 5.778e3): ");
+                                        Double idade = scanner.nextDouble();
+                                        System.out.print("Enter the radius of the Moon (Ex: 5.778e3): ");
                                         double raio = scanner.nextDouble();
                                         Lua lun = new Lua(name, massa, idade, raio, planeta);
                                         planeta.adicionarLua(lun);

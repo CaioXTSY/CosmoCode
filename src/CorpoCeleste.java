@@ -1,9 +1,9 @@
 public abstract class CorpoCeleste {
     private String nome;
     private double massa;
-    private int idade;
+    private double idade;
 
-    public CorpoCeleste(String nome, double massa, int idade) {
+    public CorpoCeleste(String nome, double massa, double idade) {
         this.nome = nome;
         this.massa = massa;
         this.idade = idade;
@@ -25,11 +25,11 @@ public abstract class CorpoCeleste {
         this.massa = massa;
     }
 
-    public int getIdade(){
+    public double getIdade(){
         return idade;
     }
 
-    public void setIdade(int idade){
+    public void setIdade(double idade){
         this.idade = idade;
     }
 
