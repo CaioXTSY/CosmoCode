@@ -19,7 +19,7 @@ public class Planeta extends CorpoCeleste implements Gravitacional {
     private int numeroDeLuas;
     private double raio;
 
-    public Planeta(String nome, double massa, double distanciaAoSol, int numeroDeLuas, double raio, int idade, Estrela estrelaOrbitada) {
+    public Planeta(String nome, double massa, double distanciaAoSol, int numeroDeLuas, double raio, double idade, Estrela estrelaOrbitada) {
         super(nome, massa, idade);
         this.distanciaAoSol = distanciaAoSol;
         this.numeroDeLuas = numeroDeLuas;

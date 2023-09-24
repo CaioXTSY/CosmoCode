@@ -5,7 +5,7 @@ public class Lua extends CorpoCeleste implements Gravitacional {
     private Planeta planeta;
     private List<CorpoCeleste> luas;
 
-    public Lua(String nome, double massa, int idade, double raio, Planeta planeta) {
+    public Lua(String nome, double massa, double idade, double raio, Planeta planeta) {
         super(nome, massa, idade);
         this.raio = raio;
         this.planeta = planeta;

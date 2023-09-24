@@ -20,6 +20,7 @@ public class Cosmos {
                 System.out.println("3 - Calculate Gravitacional Strength");
                 System.out.println("4 - View Celestial Bodies");
                 System.out.println("5 - Exit");
+                System.out.println("\nNote: When asked about some inputs, it's recommended you use the scientific notation (e notation) due to the size of the actual numbers.");
                 System.out.print("Enter your option: ");
                 Scanner scanner = new Scanner(System.in);
                 int op = scanner.nextInt();
@@ -96,18 +97,18 @@ public class Cosmos {
 
                                         System.out.print("\nEnter the name of the Star: ");
                                         String name = scanner.nextLine();
-                                        System.out.print("Enter the mass of the Star: ");
+                                        System.out.print("Enter the mass of the Star (Ex: 5.972e24)): ");
                                         String estMas = scanner.nextLine();
                                         Double massa = Double.parseDouble(estMas);
-                                        System.out.print("Enter the radius of the Star: ");
+                                        System.out.print("Enter the radius of the Star (Ex: 6.371e6): ");
                                         String estRar = scanner.nextLine();
                                         Double raio = Double.parseDouble(estRar);
-                                        System.out.print("Enter the age of the Star: ");
+                                        System.out.print("Enter the age of the Star (Ex: 4.603e9): ");
                                         String estId = scanner.nextLine();
-                                        int idade = Integer.parseInt(estId);
+                                        Double idade = Double.parseDouble(estId);
                                         System.out.print("Enter the type of the Star: ");
                                         String tipoDeEstrela = scanner.nextLine();
-                                        System.out.print("Enter the temperature of the Star: ");
+                                        System.out.print("Enter the temperature of the Star (Ex: 5.778e3): ");
                                         String estTem = scanner.nextLine();
                                         Double temperatura = Double.parseDouble(estTem);
                                         Estrela est = new Estrela(name, massa, raio, idade, tipoDeEstrela, temperatura, sistemaSolar);
@@ -140,21 +141,21 @@ public class Cosmos {
 
                                         System.out.print("\nEnter the name of the Planet: ");
                                         String name = scanner.nextLine();
-                                        System.out.print("Enter the mass of the Planet: ");
+                                        System.out.print("Enter the mass of the Planet (Ex: 5.778e3): ");
                                         String plaMas = scanner.nextLine();
                                         Double massa = Double.parseDouble(plaMas);
-                                        System.out.print("Enter the distance to the 'Sun' of the Planet: ");
+                                        System.out.print("Enter the distance to the 'Sun' of the Planet (Ex: 1.496e11): ");
                                         String plaDis = scanner.nextLine();
                                         Double distanciaAoSol = Double.parseDouble(plaDis);
                                         System.out.print("Enter the number of Moons for the Planet: ");
                                         String plaLua = scanner.nextLine();
                                         int numeroDeLuas = Integer.parseInt(plaLua);
-                                        System.out.print("Enter the radius of the Planet: ");
+                                        System.out.print("Enter the radius of the Planet (Ex: 5.778e3): ");
                                         String plaRar = scanner.nextLine();
                                         Double raio = Double.parseDouble(plaRar);
-                                        System.out.print("Enter the age of the Planet: ");
+                                        System.out.print("Enter the age of the Planet (Ex: 5.778e3): ");
                                         String plaId = scanner.nextLine();
-                                        int idade = Integer.parseInt(plaId);
+                                        Double idade = Double.parseDouble(plaId);
                                         Planeta plan = new Planeta(name, massa, distanciaAoSol, numeroDeLuas, raio, idade, estrela);
                                         estrela.adicionarPlaneta(plan);
                                         planetas.add(plan);
@@ -190,11 +191,11 @@ public class Cosmos {
 
                                         System.out.print("\nEnter the name of the Moon: ");
                                         String name = scanner.nextLine();
-                                        System.out.print("Enter the mass of the Moon: ");
+                                        System.out.print("Enter the mass of the Moon (Ex: 5.778e3): ");
                                         double massa = scanner.nextDouble();
-                                        System.out.print("Enter the age of the Moon: ");
-                                        int idade = scanner.nextInt();
-                                        System.out.print("Enter the radius of the Moon: ");
+                                        System.out.print("Enter the age of the Moon (Ex: 5.778e3): ");
+                                        Double idade = scanner.nextDouble();
+                                        System.out.print("Enter the radius of the Moon (Ex: 5.778e3): ");
                                         double raio = scanner.nextDouble();
                                         Lua lun = new Lua(name, massa, idade, raio, planeta);
                                         planeta.adicionarLua(lun);
@@ -209,11 +210,12 @@ public class Cosmos {
 
                     case 2:
                     System.out.println("\nSelect the type of Celestial Body to remove:");
-                    System.out.println("1. Solar System");
-                    System.out.println("2. Star");
-                    System.out.println("3. Planet");
-                    System.out.println("4. Moon");
-                    System.out.println("5. Exit");
+                    System.out.println("1. Galaxy");
+                    System.out.println("2. Solar System");
+                    System.out.println("3. Star");
+                    System.out.println("4. Planet");
+                    System.out.println("5. Moon");
+                    System.out.println("6. Exit");
                     System.out.print("Enter your choice: ");
                     
                     int removalChoice = scanner.nextInt();
@@ -235,7 +237,22 @@ public class Cosmos {
                                 scanner.nextLine();
                 
                                 if (galIndex >= 1 && galIndex <= galaxias.size()) {
-                                    galaxias.remove(galIndex - 1);
+                                    Galaxia toRemove = galaxias.get(galIndex - 1);
+
+                                    for (SistemaSolar sistemaSolar : toRemove.getSistemasSolares()) {
+                                        for (Estrela estrela : sistemaSolar.getEstrelas()) {
+                                            for (Planeta planeta : estrela.getPlanetas()) {
+                                                for (CorpoCeleste corpo : planeta.getLuas()) {
+                                                    Lua lua = (Lua) corpo;
+                                                    luas.remove(lua);
+                                                }
+                                                planetas.remove(planeta);
+                                            }
+                                            estrelas.remove(estrela);
+                                        }
+                                        sistemasSolares.remove(sistemaSolar);
+                                    }
+                                    galaxias.remove(toRemove);
                                     System.out.println("\nGalaxy removed successfully.");
                                 } else {
                                     System.out.println("\nInvalid Index.");
@@ -246,7 +263,7 @@ public class Cosmos {
                             if (sistemasSolares.isEmpty()) {
                                 System.out.println("\nThere are no Solar Systems to remove!");
                             } else {
-                                System.out.println("\nSelect the Solar System to remove:");
+                                System.out.println("\nSelect the Solar System to remove:\n");
                                 int index = 1;
                                 for (SistemaSolar sistemaSolar : sistemasSolares) {
                                     System.out.println(index + ". " + sistemaSolar.getNome());
@@ -282,7 +299,7 @@ public class Cosmos {
                             if (estrelas.isEmpty()) {
                                 System.out.println("\nThere are no Stars to remove!");
                             } else {
-                                System.out.println("\nSelect the Star to remove:");
+                                System.out.println("\nSelect the Star to remove:\n");
                                 int index = 1;
                                 for (Estrela estrela : estrelas) {
                                     System.out.println(index + ". " + estrela.getNome());
@@ -315,7 +332,7 @@ public class Cosmos {
                             if (planetas.isEmpty()) {
                                 System.out.println("\nThere are no Planets to remove!");
                             } else {
-                                System.out.println("\nSelect the Planet to remove:");
+                                System.out.println("\nSelect the Planet to remove:\n");
                                 int index = 1;
                                 for (Planeta planeta : planetas) {
                                     System.out.println(index + ". " + planeta.getNome());
@@ -346,7 +363,7 @@ public class Cosmos {
                             if (luas.isEmpty()) {
                                 System.out.println("\nThere are no Moons to remove!");
                             } else {
-                                System.out.println("\nSelect the Moon to remove:");
+                                System.out.println("\nSelect the Moon to remove:\n");
                                 int index = 1;
                                 for (Lua lua : luas) {
                                     System.out.println(index + ". " + lua.getNome());
@@ -374,6 +391,8 @@ public class Cosmos {
                             System.out.println("\nInvalid choice. Returning to main menu.");
                             break;
                     }
+                    break;
+
                     case 3:
                         if (sistemasSolares.isEmpty()) {
                             System.out.println("\nThere are no Solar Systems in this Space!");
