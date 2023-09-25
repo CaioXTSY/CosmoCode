@@ -6,24 +6,35 @@ public class Galaxia {
     private List<SistemaSolar> sistemasSolares;
 
     public Galaxia(String nome) {
+        if (nome == null || nome.trim().isEmpty()) {
+            throw new IllegalArgumentException("Galaxy name cannot be null or empty.");
+        }
         this.nome = nome;
         this.sistemasSolares = new ArrayList<>();
     }
 
     public void adicionarSistemaSolar(SistemaSolar sistemaSolar) {
+        if (sistemaSolar == null) {
+            throw new IllegalArgumentException("Solar system cannot be null.");
+        }
         this.sistemasSolares.add(sistemaSolar);
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public List<SistemaSolar> getSistemasSolares() {
-        return sistemasSolares;
+    public void removerSistemaSolar(SistemaSolar sistemaSolar) {
+        if (sistemaSolar == null) {
+            throw new IllegalArgumentException("Solar system cannot be null.");
+        }
+        for (Estrela estrela : sistemaSolar.getEstrelas()) {
+            for (Planeta planeta : estrela.getPlanetas()) {
+                for (CorpoCeleste corpo : planeta.getLuas()) {
+                    Lua lua = (Lua) corpo;
+                    planeta.removerLua(lua);
+                }
+                estrela.removerPlaneta(planeta);
+            }
+            sistemaSolar.removerEstrela(estrela);
+        }
+        this.sistemasSolares.remove(sistemaSolar);
     }
 
     public String descricao() {
@@ -38,17 +49,19 @@ public class Galaxia {
         return descricao.toString();
     }
 
-    public void removerSistemaSolar(SistemaSolar sistemaSolar) {
-        for (Estrela estrela : sistemaSolar.getEstrelas()) {
-            for (Planeta planeta : estrela.getPlanetas()) {
-                for (CorpoCeleste corpo : planeta.getLuas()) {
-                    Lua lua = (Lua) corpo;
-                    planeta.removerLua(lua);
-                }
-                estrela.removerPlaneta(planeta);
-            }
-            sistemaSolar.removerEstrela(estrela);
+    // Getters and Setters
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        if (nome == null || nome.trim().isEmpty()) {
+            throw new IllegalArgumentException("Galaxy name cannot be null or empty.");
         }
-        this.sistemasSolares.remove(sistemaSolar);
+        this.nome = nome;
+    }
+
+    public List<SistemaSolar> getSistemasSolares() {
+        return sistemasSolares;
     }
 }

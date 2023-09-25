@@ -8,8 +8,18 @@ public class Estrela extends CorpoCeleste implements Gravitacional {
     private SistemaSolar sistemaSolar;
     private List<Planeta> planetas;
 
-    public Estrela(String nome, double massa, double raio, double idade, String tipoDeEstrela, double temperatura, SistemaSolar sistemaSolar) {
+    public Estrela(String nome, double massa, double raio, double idade, 
+                   String tipoDeEstrela, double temperatura, SistemaSolar sistemaSolar) {
         super(nome, massa, idade);
+        
+        if (raio <= 0 || temperatura <= 0) {
+            throw new IllegalArgumentException("Radius and temperature must be positive..");
+        }
+        
+        if (tipoDeEstrela == null || tipoDeEstrela.trim().isEmpty()) {
+            throw new IllegalArgumentException("Star type cannot be null or empty.");
+        }
+        
         this.raio = raio;
         this.tipoDeEstrela = tipoDeEstrela;
         this.temperatura = temperatura;
@@ -18,6 +28,9 @@ public class Estrela extends CorpoCeleste implements Gravitacional {
     }
 
     public void adicionarPlaneta(Planeta planeta) {
+        if (planeta == null) {
+            throw new IllegalArgumentException("Planet cannot be null.");
+        }
         this.planetas.add(planeta);
     }
 
@@ -26,6 +39,9 @@ public class Estrela extends CorpoCeleste implements Gravitacional {
     }
 
     public void setSistemaSolar(SistemaSolar sistemaSolar) {
+        if (sistemaSolar == null) {
+            throw new IllegalArgumentException("Solar system cannot be null.");
+        }
         this.sistemaSolar = sistemaSolar;
     }
 
@@ -55,12 +71,13 @@ public class Estrela extends CorpoCeleste implements Gravitacional {
 
     @Override
     public String descricao() {
-        return "\nThe Star " + getNome() + ", of the type " + getTipoDeEstrela() + ", has existed for " + getIdade() 
-        + " billions of years, it has a mass of " + getMassa() + " Kgs, its radius is of " + getRaio() + 
-        " Kms, and its temperature is " + getTemperatura() + " K, she belongs to the Solar System " + getSistemaSolar().getNome() + "."
-        + "\nExtra Info:" + "\n - Density: " + calcularDensidade() + " g/cm^3"
-        + "\n - Volume: " + calcularVolume() + " km^3" + "\n - Surface: " + calcularSuperficie() + " km²"
-        + "\n - Gravity: " + calcularGravidade() + " m/s²";
+        return "\nThe Star " + getNome() + ", of the type " + getTipoDeEstrela() + 
+               ", has existed for " + getIdade() + "  years, it has a mass of " + 
+               getMassa() + " Kgs, its radius is of " + getRaio() + " Kms, and its temperature is " + 
+               getTemperatura() + " K, she belongs to the Solar System " + getSistemaSolar().getNome() + "." +
+               "\nExtra Info:" + "\n - Density: " + calcularDensidade() + " g/cm^3" +
+               "\n - Volume: " + calcularVolume() + " km^3" + "\n - Surface: " + calcularSuperficie() + " km²" +
+               "\n - Gravity: " + calcularGravidade() + " m/s²";
     }
 
     @Override
@@ -73,6 +90,9 @@ public class Estrela extends CorpoCeleste implements Gravitacional {
     }
 
     public void setTipoDeEstrela(String tipoDeEstrela) {
+        if (tipoDeEstrela == null || tipoDeEstrela.trim().isEmpty()) {
+            throw new IllegalArgumentException("Star type cannot be null or empty.");
+        }
         this.tipoDeEstrela = tipoDeEstrela;
     }
 
@@ -81,6 +101,9 @@ public class Estrela extends CorpoCeleste implements Gravitacional {
     }
 
     public void setTemperatura(double temperatura) {
+        if (temperatura <= 0) {
+            throw new IllegalArgumentException("Temperature must be positive.");
+        }
         this.temperatura = temperatura;
     }
 
@@ -89,10 +112,16 @@ public class Estrela extends CorpoCeleste implements Gravitacional {
     }
 
     public void setRaio(double raio) {
+        if (raio <= 0) {
+            throw new IllegalArgumentException("Radius must be positive.");
+        }
         this.raio = raio;
     }
 
     public void removerPlaneta(Planeta planeta) {
+        if (planeta == null) {
+            throw new IllegalArgumentException("Planet cannot be null.");
+        }
         for (CorpoCeleste corpo : planeta.getLuas()) {
             Lua lua = (Lua) corpo;
             planeta.removerLua(lua);

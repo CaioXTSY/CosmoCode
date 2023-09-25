@@ -1,21 +1,19 @@
-import java.util.List;
-
 public class Lua extends CorpoCeleste implements Gravitacional {
     private double raio;
     private Planeta planeta;
-    private List<CorpoCeleste> luas;
 
     public Lua(String nome, double massa, double idade, double raio, Planeta planeta) {
         super(nome, massa, idade);
+        
+        if (raio <= 0) {
+            throw new IllegalArgumentException("Radius must be positive.");
+        }
+
+        if (planeta == null) {
+            throw new IllegalArgumentException("Planet cannot be null.");
+        }
+
         this.raio = raio;
-        this.planeta = planeta;
-    }
-
-    public Planeta getPlaneta() {
-        return planeta;
-    }
-
-    public void setPlaneta(Planeta planeta) {
         this.planeta = planeta;
     }
 
@@ -41,7 +39,7 @@ public class Lua extends CorpoCeleste implements Gravitacional {
 
     @Override
     public String descricao() {
-        return "\nThe Moon " + getNome() + ", existent since " + getIdade() + " billions of years, has a mass of " 
+        return "\nThe Moon " + getNome() + ", existent since " + getIdade() + "  years, has a mass of " 
         + getMassa() + " Kgs, its radius is " + getRaio() + " Kms, and it orbits the Planet " + getPlaneta().getNome() + "."
         + "\nExtra Info:" + "\n - Density: " + calcularDensidade() + " g/cm^3"
         + "\n - Volume: " + calcularVolume() + " km^3" + "\n - Surface: " + calcularSuperficie() + " km²"
@@ -53,19 +51,26 @@ public class Lua extends CorpoCeleste implements Gravitacional {
         return (6.67430e-11 * getMassa() * outroCorpo.getMassa()) / Math.pow(raio * 1000, 2);
     }
 
+    // Getters and Setters
+    public Planeta getPlaneta() {
+        return planeta;
+    }
+
+    public void setPlaneta(Planeta planeta) {
+        if (planeta == null) {
+            throw new IllegalArgumentException("Planet cannot be null.");
+        }
+        this.planeta = planeta;
+    }
+
     public double getRaio() {
         return raio;
     }
 
     public void setRaio(double raio) {
+        if (raio <= 0) {
+            throw new IllegalArgumentException("Radius must be positive.");
+        }
         this.raio = raio;
-    }
-
-    public void removerLua(CorpoCeleste lua) {
-        this.luas.remove(lua);
-    }
-
-    public List<CorpoCeleste> getLuas() {
-        return luas;
     }
 }

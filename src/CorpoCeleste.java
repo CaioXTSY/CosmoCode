@@ -4,6 +4,18 @@ public abstract class CorpoCeleste {
     private double idade;
 
     public CorpoCeleste(String nome, double massa, double idade) {
+        if (nome == null || nome.trim().isEmpty()) {
+            throw new IllegalArgumentException("The name of the celestial body cannot be null or empty.");
+        }
+        
+        if (massa <= 0) {
+            throw new IllegalArgumentException("Mass must be positive.");
+        }
+        
+        if (idade < 0) {
+            throw new IllegalArgumentException("Age cannot be negative.");
+        }
+
         this.nome = nome;
         this.massa = massa;
         this.idade = idade;
@@ -14,6 +26,9 @@ public abstract class CorpoCeleste {
     }
 
     public void setNome(String nome) {
+        if (nome == null || nome.trim().isEmpty()) {
+            throw new IllegalArgumentException("The name of the celestial body cannot be null or empty.");
+        }
         this.nome = nome;
     }
 
@@ -22,14 +37,20 @@ public abstract class CorpoCeleste {
     }
 
     public void setMassa(double massa) {
+        if (massa <= 0) {
+            throw new IllegalArgumentException("Mass must be positive.");
+        }
         this.massa = massa;
     }
 
-    public double getIdade(){
+    public double getIdade() {
         return idade;
     }
 
-    public void setIdade(double idade){
+    public void setIdade(double idade) {
+        if (idade < 0) {
+            throw new IllegalArgumentException("Age cannot be negative.");
+        }
         this.idade = idade;
     }
 
@@ -42,5 +63,4 @@ public abstract class CorpoCeleste {
     public abstract double calcularDensidade();
 
     public abstract double calcularGravidade();
-
 }
