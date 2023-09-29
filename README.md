@@ -28,9 +28,9 @@ O estudo e a simulação do universo 🌌 têm aplicações práticas em diversa
 
 ## 🎩 Objetivos da Implementação 🌠
 
-1. 🛠️ Desenvolver uma estrutura de classes que represente diferentes tipos de corpos celestes, como planetas, estrelas, luas, asteroides, cometas e buracos negros.
+1. 🛠️ Desenvolver uma estrutura de classes que represente diferentes tipos de corpos celestes, como planetas, estrelas, luas, etc.
   
-2. 🧪 Implementar métodos para simular a interação entre esses corpos, como movimento orbital e forças gravitacionais.
+2. 🧪 Implementar métodos para simular a interação entre esses corpos, como e forças gravitacionais.
 
 ---
 
