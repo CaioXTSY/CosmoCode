@@ -20,7 +20,7 @@ public class Cosmos {
                 System.out.println("3 - Calculate Gravitacional Strength");
                 System.out.println("4 - View Celestial Bodies");
                 System.out.println("5 - Exit");
-                System.out.println("\nNote: When asked about some inputs, it's recommended you use the scientific notation (e notation) due to the size of the actual numbers.");
+                System.out.println("Note: When asked about some inputs, it's recommended you use the scientific notation (e notation) due to the size of the actual numbers.");
                 System.out.print("Enter your option: ");
                 Scanner scanner = new Scanner(System.in);
                 int op = scanner.nextInt();
@@ -30,6 +30,7 @@ public class Cosmos {
 
                     case 1:
                         System.out.println("\n-----ADD CELESTIAL BODIES-----");
+                        System.out.println("\nSelect the type of Celestial Body to create:");
                         System.out.println("1 - Add Galaxy");
                         System.out.println("2 - Add Solar System");
                         System.out.println("3 - Add Star");
@@ -209,6 +210,7 @@ public class Cosmos {
                         break;
 
                     case 2:
+                    System.out.println("\n-----REMOVE CELESTIAL BODIES-----");
                     System.out.println("\nSelect the type of Celestial Body to remove:");
                     System.out.println("1. Galaxy");
                     System.out.println("2. Solar System");
@@ -394,6 +396,7 @@ public class Cosmos {
                     break;
 
                     case 3:
+                        System.out.println("\n-----GRAVITATIONAL FORCE-----");
                         if (sistemasSolares.isEmpty()) {
                             System.out.println("\nThere are no Solar Systems in this Space!");
                         } else {
