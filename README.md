@@ -70,3 +70,6 @@ O estudo e a simulação do universo 🌌 têm aplicações práticas em diversa
 ## 📜 Obs
 
 O método de cálculo de força gravitacional que será implementado neste projeto é uma simplificação e idealização. Ele não representa as complexas equações e teorias da física que descrevem esse fenômenos no universo real.
+
+## 📊 Diagrama de Classes
+![diagram](https://github.com/CaioXTSY/CosmoCode/assets/125697270/da6f518e-8832-4f47-a741-dfd16c8826fd)
